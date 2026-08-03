@@ -20,7 +20,7 @@ npx @pharmatools/groundwork init
 ## See it work in 60 seconds — no API key
 
 ```bash
-git clone <this repo> && cd groundwork
+git clone https://github.com/nickjlamb/groundwork.git && cd groundwork
 npm install && npm run build
 npm run demo          # the whole loop passes, fully offline
 npm run demo:break    # the system starts fabricating — the gate catches it by name
