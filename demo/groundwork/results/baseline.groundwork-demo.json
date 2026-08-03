@@ -1,0 +1,84 @@
+{
+  "timestamp": "2026-08-03T15:41:36.459Z",
+  "sha": "1c062ce",
+  "online": true,
+  "adapter": "groundwork-demo",
+  "results": [
+    {
+      "id": "citation-detection",
+      "meta": {
+        "id": "citation-detection",
+        "mode": "offline"
+      },
+      "metrics": {
+        "perClaim_exactSetRate": 1,
+        "perClaim_jaccardMean": 0,
+        "supportedStyle_accuracy": 1,
+        "knownGap_styles": []
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "claim-extraction",
+      "meta": {
+        "id": "claim-extraction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo\" has no QA capability"
+    },
+    {
+      "id": "verdict-accuracy",
+      "meta": {
+        "id": "verdict-accuracy",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo\" has no QA capability"
+    },
+    {
+      "id": "redaction",
+      "meta": {
+        "id": "redaction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo\" has no redaction capability"
+    },
+    {
+      "id": "simplification",
+      "meta": {
+        "id": "simplification",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo\" has no simplify capability"
+    },
+    {
+      "id": "retrieval",
+      "meta": {
+        "id": "retrieval",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo\" has no retrieval capability"
+    },
+    {
+      "id": "grounding",
+      "meta": {
+        "id": "grounding",
+        "mode": "online"
+      },
+      "metrics": {
+        "n_cases": 5,
+        "n_answerable": 3,
+        "answer_recall": 1,
+        "ungrounded_numbers": 0,
+        "abstention_rate": 1
+      },
+      "failures": [],
+      "passed": true
+    }
+  ]
+}

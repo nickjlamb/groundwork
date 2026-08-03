@@ -2,5 +2,8 @@ node_modules/
 dist/
 *.log
 .DS_Store
-results/
+# eval outputs are throwaway — except committed baselines, which are the
+# regression floor `check --ci` gates against
+**/results/*
+!**/results/baseline.*.json
 Groundwork-HANDOVER.md

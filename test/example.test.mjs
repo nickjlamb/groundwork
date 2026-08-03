@@ -32,6 +32,20 @@ test("example passes offline against the mock API, capturing usage", () => {
   assert.ok(usage.prompt_tokens > 0 && usage.completion_tokens > 0);
 });
 
+test("example respects its committed baseline (check --ci)", (t) => {
+  const baseline = join(RESULTS, "baseline.claude-doc-qa.json");
+  if (!existsSync(baseline)) {
+    t.skip("no committed baseline yet — freeze one with check --baseline");
+    return;
+  }
+  const res = spawnSync(
+    process.execPath,
+    [join(ROOT, "examples", "claude-doc-qa", "run-mock.mjs"), "--ci"],
+    { cwd: ROOT, encoding: "utf8" }
+  );
+  assert.equal(res.status, 0, res.stdout + res.stderr);
+});
+
 test("cost reads the example's captured usage and leads with prompt caching", () => {
   assert.ok(existsSync(RESULTS), "run after the mock check test");
   const res = spawnSync(
