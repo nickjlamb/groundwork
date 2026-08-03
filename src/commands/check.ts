@@ -71,10 +71,20 @@ export async function runCheck(opts: CheckOptions): Promise<number> {
   if (opts.report) args.push("--report");
 
   out.write(`  → grounding   running OpenGATE…\n\n`);
+  // stderr is piped so we can drop the harmless "not a git repository"
+  // noise OpenGATE emits (via git, for run provenance) when the partner
+  // hasn't run `git init` yet. Everything else passes through.
   const res = spawnSync(process.execPath, args, {
     cwd: opts.dir,
-    stdio: "inherit",
+    stdio: ["inherit", "inherit", "pipe"],
+    encoding: "utf8",
   });
+  const stderrText = (res.stderr ?? "")
+    .split("\n")
+    .filter((line) => !/not a git repository/i.test(line))
+    .join("\n")
+    .trim();
+  if (stderrText) process.stderr.write(stderrText + "\n");
 
   const code = res.status ?? 1;
   if (code !== 0) return code;

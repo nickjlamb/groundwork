@@ -28,6 +28,8 @@ npm run demo:break    # the system starts fabricating — the gate catches it by
 
 [`demo/`](demo/) is a miniature partner repo: a tiny local document-QA system wrapped in the exact harness `init` scaffolds. The second command is the product in one line: a system that invents a figure or answers when it should abstain turns the build red.
 
+Ready to wire your own system? [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) is the full walkthrough — install, scaffold, adapter, gold set, CI gate — in about half an hour.
+
 ## What Groundwork is not
 
 Groundwork is a strong **floor**, not a guarantee. Deterministic checks catch the failures that can be caught deterministically; they cannot certify an AI system safe. For high-stakes outputs — anything touching health, legal standing, benefits, or safety — a human must review before the answer reaches the person it affects. The scaffolded playbook says this too, on purpose, where your team will read it.
