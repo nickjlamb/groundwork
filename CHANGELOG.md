@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.3.0] — 2026-08-03
+
 ### Added
 
 - **Retrieval fidelity for document QA** — adapters can expose `fetchRecord({ id })` and add gold cases of kind `"retrieval"`: hand-copied anchors from the source document that catch ingestion regressions (truncated bodies, dropped titles, garbled fields) before they silently poison every grounded answer downstream. Scaffolded as an opt-in block in the adapter template plus `_template-retrieval.json`; the demo now exercises it in both pass and break modes.
@@ -31,6 +33,7 @@ First public release.
 - Committed regression baselines for the demo and the example, enforced by the test suite.
 - Docs: `docs/GETTING-STARTED.md` walkthrough; website at [pharmatools.ai/groundwork](https://www.pharmatools.ai/groundwork).
 
-[Unreleased]: https://github.com/nickjlamb/groundwork/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/nickjlamb/groundwork/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/nickjlamb/groundwork/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/nickjlamb/groundwork/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/nickjlamb/groundwork/releases/tag/v0.1.0
