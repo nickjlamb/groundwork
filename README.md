@@ -73,7 +73,7 @@ groundwork check --ci            exit non-zero on failure or regression vs basel
 groundwork cost                  measured token usage + savings, in leverage order
 ```
 
-The full walkthrough — install to gated CI in about half an hour — is in [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md). The scaffolded playbook (`GROUNDWORK.md`) repeats it inside your repo, where your team will actually read it.
+Two ways to learn it: [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) is the reference walkthrough (about half an hour), and [**the course**](docs/course/) covers the same ground as six checkpoint-driven lessons — including the sabotage test, where you deliberately break your own system to prove the gate catches it. The scaffolded playbook (`GROUNDWORK.md`) lives inside your repo, where your team will actually read it.
 
 ## Use from Claude
 

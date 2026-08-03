@@ -1,5 +1,7 @@
 # Getting started with Groundwork
 
+> Prefer a guided path? [The course](course/) covers this same material as six short lessons with verifiable checkpoints — including the sabotage test that proves your CI gate actually catches regressions.
+
 This walkthrough takes you from a working document-QA prototype to a system with a redaction pre-step, a grounding eval built from your own real failures, and a CI gate that fails any change which makes reliability worse. Plan for about half an hour, most of it spent writing gold cases — which is the half hour that matters.
 
 You need Node 18+ and a document-QA system you can call from JavaScript: an HTTP endpoint, or a local module. No ML engineering, no eval expertise, and — for the checks themselves — no API key. Every check is deterministic: same inputs, same result, free.
