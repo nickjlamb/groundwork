@@ -1,6 +1,10 @@
 # Groundwork
 
-**A deployment-readiness harness for document-QA AI systems.**
+[![npm](https://img.shields.io/npm/v/@pharmatools/groundwork)](https://www.npmjs.com/package/@pharmatools/groundwork)
+[![CI](https://github.com/nickjlamb/groundwork/actions/workflows/ci.yml/badge.svg)](https://github.com/nickjlamb/groundwork/actions)
+[![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+**A deployment-readiness harness for document-QA AI systems.** · [pharmatools.ai/groundwork](https://www.pharmatools.ai/groundwork)
 
 You have a prototype: your documents, users' questions, a model's answers. Groundwork scaffolds the layer between that prototype and safe production — redaction before anything leaves your machine, grounding checks against your own gold set, a CI gate so reliability can't quietly regress, and a playbook written for teams without an ML engineer.
 

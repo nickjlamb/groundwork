@@ -22,10 +22,10 @@ The second command is the product in miniature: a system that invents a figure o
 ## 2. Install it in your project
 
 ```bash
-npm install -D github:nickjlamb/groundwork
+npm install -D @pharmatools/groundwork
 ```
 
-(The package builds itself on install. Once it's published to npm, `npm install -D @pharmatools/groundwork` will be the shorter route.)
+(To track the unreleased main branch instead: `npm install -D github:nickjlamb/groundwork` — the package builds itself on install.)
 
 ## 3. Scaffold the harness
 
