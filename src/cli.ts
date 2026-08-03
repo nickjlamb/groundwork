@@ -25,7 +25,11 @@ const HELP = `groundwork ${version()} — deployment-readiness for document-QA A
 
 Usage:
   groundwork init [--force] [--dir <path>]   scaffold the readiness harness
-  groundwork check [--dir <path>]            run redaction + grounding locally
+  groundwork check [--dir <path>]            redaction self-test + grounding eval
+        [--baseline]                         save this run as the regression floor
+        [--ci]                               fail (exit 1) on regression vs baseline
+        [--report]                           write a self-contained HTML report
+  groundwork cost [--dir <path>]             token usage + savings, leverage order
   groundwork --help | --version
 
 groundwork is a strong floor, not a guarantee. It automates the checks that
@@ -62,8 +66,20 @@ async function main(): Promise<void> {
     }
     case "check": {
       const { runCheck } = await import("./commands/check.js");
-      const code = await runCheck({ dir: flagValue("--dir") ?? process.cwd() });
+      const code = await runCheck({
+        dir: flagValue("--dir") ?? process.cwd(),
+        baseline: flags.has("--baseline"),
+        ci: flags.has("--ci"),
+        report: flags.has("--report"),
+      });
       process.exitCode = code;
+      return;
+    }
+    case "cost": {
+      const { runCost } = await import("./commands/cost.js");
+      process.exitCode = await runCost({
+        dir: flagValue("--dir") ?? process.cwd(),
+      });
       return;
     }
     default:

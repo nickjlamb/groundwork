@@ -31,6 +31,8 @@ npx @pharmatools/groundwork check
 
 This runs the redaction self-test, then the grounding eval: are the required facts in each answer? Does every number trace to your documents? Does the system abstain when it should? All deterministic — no judge model, no API key for the checks themselves, results reproducible to the decimal.
 
+The output lists several scorers; for document QA the row that matters is **`grounding`** (the others belong to eval shapes your adapter doesn't implement, and skip cleanly). If the grounding row itself was skipped, the run is not a pass — the summary will say so and point at what's missing.
+
 ## Step 5 — Freeze a baseline and gate your CI
 
 Happy with a run? Save it as the floor future changes are measured against, and commit it:
