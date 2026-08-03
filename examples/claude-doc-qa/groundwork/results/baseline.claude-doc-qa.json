@@ -1,0 +1,84 @@
+{
+  "timestamp": "2026-08-03T15:52:47.677Z",
+  "sha": "c022da1",
+  "online": true,
+  "adapter": "claude-doc-qa",
+  "results": [
+    {
+      "id": "citation-detection",
+      "meta": {
+        "id": "citation-detection",
+        "mode": "offline"
+      },
+      "metrics": {
+        "perClaim_exactSetRate": 1,
+        "perClaim_jaccardMean": 0,
+        "supportedStyle_accuracy": 1,
+        "knownGap_styles": []
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "claim-extraction",
+      "meta": {
+        "id": "claim-extraction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-doc-qa\" has no QA capability"
+    },
+    {
+      "id": "verdict-accuracy",
+      "meta": {
+        "id": "verdict-accuracy",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-doc-qa\" has no QA capability"
+    },
+    {
+      "id": "redaction",
+      "meta": {
+        "id": "redaction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-doc-qa\" has no redaction capability"
+    },
+    {
+      "id": "simplification",
+      "meta": {
+        "id": "simplification",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-doc-qa\" has no simplify capability"
+    },
+    {
+      "id": "retrieval",
+      "meta": {
+        "id": "retrieval",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-doc-qa\" has no retrieval capability"
+    },
+    {
+      "id": "grounding",
+      "meta": {
+        "id": "grounding",
+        "mode": "online"
+      },
+      "metrics": {
+        "n_cases": 6,
+        "n_answerable": 4,
+        "answer_recall": 1,
+        "ungrounded_numbers": 0,
+        "abstention_rate": 1
+      },
+      "failures": [],
+      "passed": true
+    }
+  ]
+}
