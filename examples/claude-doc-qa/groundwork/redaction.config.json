@@ -1,0 +1,6 @@
+{
+  "categories": ["clinical", "general"],
+  "notes": [
+    "Clinical + general identifier passes, as a medicines-adjacent example should run. The leaflet itself contains no identifiers; the pre-step is here because real enquiries do."
+  ]
+}

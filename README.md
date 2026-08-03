@@ -28,7 +28,7 @@ npm run demo:break    # the system starts fabricating — the gate catches it by
 
 [`demo/`](demo/) is a miniature partner repo: a tiny local document-QA system wrapped in the exact harness `init` scaffolds. The second command is the product in one line: a system that invents a figure or answers when it should abstain turns the build red.
 
-Ready to wire your own system? [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) is the full walkthrough — install, scaffold, adapter, gold set, CI gate — in about half an hour.
+Ready to wire your own system? [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) is the full walkthrough — install, scaffold, adapter, gold set, CI gate — in about half an hour. And [`examples/claude-doc-qa/`](examples/claude-doc-qa/) is the harness around a real Claude-backed system: prompt caching, key-gated evals, and live token usage feeding `groundwork cost` (`npm run example:mock` runs its whole loop offline).
 
 ## What Groundwork is not
 

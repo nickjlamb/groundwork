@@ -1,0 +1,25 @@
+{
+  "id": "dose",
+  "kind": "grounding",
+  "description": "The dose must be the leaflet's, verbatim figures: 50 mg, twice a day.",
+  "question": "What is the recommended dose of Luminexa?",
+  "answerAnchors": [
+    {
+      "value": "50 mg",
+      "aliases": [
+        "50mg"
+      ]
+    },
+    {
+      "value": "twice a day",
+      "aliases": [
+        "twice daily",
+        "two times a day",
+        "morning and the evening"
+      ]
+    }
+  ],
+  "allowedNewNumbers": [],
+  "answerable": true,
+  "context": "Luminexa contains fictionol, which belongs to a group of medicines called selective placebo modulators. Luminexa is used in adults for the short-term relief of demonstration syndrome. Do not take Luminexa if you are allergic to fictionol or any of the other ingredients listed in section 6. Do not take Luminexa together with examplazole, as the combination can increase the level of fictionol in your blood. Talk to your doctor before taking Luminexa if you have moderate or severe kidney problems, as your doctor may need to reduce your dose. Luminexa contains lactose. If you have been told by your doctor that you have an intolerance to some sugars, contact your doctor before taking this medicine. The recommended dose is one 50 mg tablet twice a day, taken in the morning and the evening. Do not take more than 100 mg in 24 hours. Swallow the tablet whole with a glass of water, with or without food. If you forget a dose, take it as soon as you remember unless it is nearly time for your next dose. Do not take a double dose to make up for a forgotten tablet. Treatment should not continue for longer than 14 days without medical review. Like all medicines, this medicine can cause side effects, although not everybody gets them. Common side effects (may affect up to 1 in 10 people) include headache, dry mouth, and mild drowsiness. If you notice swelling of the face, lips or throat, stop taking Luminexa and seek medical help immediately. Keep this medicine out of the sight and reach of children. Do not store above 25°C. Store in the original package in order to protect from moisture. Do not use this medicine after the expiry date printed on the carton. Each film-coated tablet contains 50 mg of fictionol hydrochloride. The other ingredients are lactose monohydrate, magnesium stearate, and a film coating containing titanium dioxide. Each pack contains 28 tablets."
+}

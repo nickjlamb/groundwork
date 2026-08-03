@@ -1,0 +1,20 @@
+{
+  "project": "claude-doc-qa",
+  "archetype": "document-qa",
+  "redaction": {
+    "enabled": true,
+    "configFile": "./groundwork/redaction.config.json"
+  },
+  "eval": {
+    "adapter": "./groundwork/adapter.mjs",
+    "datasets": "./groundwork/datasets",
+    "results": "./groundwork/results"
+  },
+  "gate": {
+    "failBuildOnRegression": true
+  },
+  "review": {
+    "humanInLoop": true,
+    "notes": "This example answers questions about a FICTIONAL medicine leaflet. For real medicines information, a pharmacist reviews before anything reaches a patient — the gate measures grounding, it does not certify safety."
+  }
+}

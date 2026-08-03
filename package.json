@@ -40,6 +40,8 @@
     "test": "npm run build && node --test test/*.test.mjs",
     "demo": "node dist/cli.js check --dir demo",
     "demo:break": "DEMO_FABRICATE=1 node dist/cli.js check --dir demo",
+    "example:mock": "node examples/claude-doc-qa/run-mock.mjs",
+    "example:check": "node dist/cli.js check --dir examples/claude-doc-qa",
     "prepublishOnly": "npm test"
   },
   "dependencies": {
