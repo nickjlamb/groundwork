@@ -1,0 +1,8 @@
+{
+  "id": "example-unanswerable",
+  "kind": "grounding",
+  "description": "Example — replace with your own, but ALWAYS keep unanswerable cases in your set. When the context can't answer, the system must say so — not guess.",
+  "question": "What is the deadline for appealing a rejected application?",
+  "context": "Housing Support Programme — Eligibility. Applicants must be a current resident of the borough and have a household income below the published threshold. Support is not means of last resort: applicants may hold savings up to £16,000.",
+  "answerable": false
+}

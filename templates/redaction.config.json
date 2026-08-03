@@ -1,0 +1,10 @@
+{
+  "categories": ["clinical", "general"],
+  "notes": [
+    "Deterministic redaction via @pharmatools/redacta — runs locally, no network.",
+    "'clinical' catches NHS numbers (Modulus-11 validated), NI numbers, dates of birth, postcodes, phones, emails, hospital/MRN numbers, and keyword-anchored patient/relative/carer names.",
+    "'general' adds URLs, IPs, Luhn-validated payment cards, IBANs, account numbers, and vehicle registrations.",
+    "Add 'safeharbor' for a stricter US HIPAA Safe Harbor pass: ALL dates, specific ages, fax, licence, device serial, VIN, and health-plan numbers.",
+    "Limits: deterministic + keyword-anchored detection only. Names in free prose are NOT caught. This is a strong first line of defence, not a guarantee — review the redaction report before anything sensitive leaves your machine."
+  ]
+}

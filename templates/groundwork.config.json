@@ -1,0 +1,20 @@
+{
+  "project": "{{PROJECT_NAME}}",
+  "archetype": "document-qa",
+  "redaction": {
+    "enabled": true,
+    "configFile": "./groundwork/redaction.config.json"
+  },
+  "eval": {
+    "adapter": "./groundwork/adapter.mjs",
+    "datasets": "./groundwork/datasets",
+    "results": "./groundwork/results"
+  },
+  "gate": {
+    "failBuildOnRegression": true
+  },
+  "review": {
+    "humanInLoop": true,
+    "notes": "Groundwork automates the checks that can be automated. It does not certify answers safe. Keep a human review step for any output that affects a person's health, money, legal standing, or safety."
+  }
+}

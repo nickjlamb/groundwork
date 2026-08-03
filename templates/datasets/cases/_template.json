@@ -1,0 +1,15 @@
+{
+  "id": "REPLACE-short-slug",
+  "kind": "grounding",
+  "description": "One line: what real failure or critical behaviour this case pins down.",
+  "question": "The question a user actually asked (or would ask).",
+  "context": "The passage(s) your retrieval step returned for this question. Paste the real text.",
+  "answerAnchors": [
+    {
+      "value": "a fact a correct answer MUST contain",
+      "aliases": ["acceptable rephrasing", "another acceptable form"]
+    }
+  ],
+  "allowedNewNumbers": [],
+  "answerable": true
+}

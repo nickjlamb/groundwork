@@ -1,0 +1,12 @@
+{
+  "id": "example-numeric",
+  "kind": "grounding",
+  "description": "Example — replace with your own. Numbers in the answer must trace to the context; a fabricated figure fails the case.",
+  "question": "How much can applicants hold in savings and still qualify?",
+  "context": "Housing Support Programme — Eligibility. Applicants must be a current resident of the borough and have a household income below the published threshold. Support is not means of last resort: applicants may hold savings up to £16,000.",
+  "answerAnchors": [
+    { "value": "16,000", "aliases": ["£16,000", "16000"] }
+  ],
+  "allowedNewNumbers": [],
+  "answerable": true
+}

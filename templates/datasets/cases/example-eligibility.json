@@ -1,0 +1,13 @@
+{
+  "id": "example-eligibility",
+  "kind": "grounding",
+  "description": "Example — replace with your own. Answer must state both eligibility conditions from the programme guide; nothing invented.",
+  "question": "Who is eligible for the housing support programme?",
+  "context": "Housing Support Programme — Eligibility. Applicants must be a current resident of the borough and have a household income below the published threshold. Applications from those with an active tenancy dispute are assessed by the casework team first. Support is not means of last resort: applicants may hold savings up to £16,000.",
+  "answerAnchors": [
+    { "value": "resident of the borough", "aliases": ["current resident", "live in the borough"] },
+    { "value": "income below", "aliases": ["below the published threshold", "income under"] }
+  ],
+  "allowedNewNumbers": [],
+  "answerable": true
+}

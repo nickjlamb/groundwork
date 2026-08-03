@@ -1,0 +1,35 @@
+# Groundwork regression gate — fails the build if grounding drops below your
+# saved baseline. Scaffolded by `groundwork init`; runs the OpenGATE grounding
+# eval through ./groundwork/adapter.mjs against ./groundwork/datasets.
+#
+# Setup (once):
+#   1. Set repository variable SYSTEM_URL (Settings → Secrets and variables →
+#      Actions → Variables) and, if your API needs auth, secret SYSTEM_TOKEN.
+#   2. Save a baseline locally and commit it:
+#        npx @pharmatools/groundwork check --baseline
+#        git add groundwork/results/baseline.*.json && git commit -m "Add grounding baseline"
+name: Groundwork gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Grounding regression gate
+        run: |
+          npm install --no-save @pharmatools/opengate @pharmatools/redacta
+          npx @pharmatools/opengate --online --ci \
+            --adapter ./groundwork/adapter.mjs \
+            --datasets ./groundwork/datasets \
+            --results ./groundwork/results
+        env:
+          SYSTEM_URL: ${{ vars.SYSTEM_URL }}
+          SYSTEM_TOKEN: ${{ secrets.SYSTEM_TOKEN }}
