@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="440" viewBox="0 0 920 440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+
+  <!-- ============ Your repo ============ -->
+  <rect x="20" y="60" width="240" height="320" rx="14" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="140" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">Your repo</text>
+  <text x="140" y="112" text-anchor="middle" font-size="11.5" fill="#656d76">scaffolded by `groundwork init`</text>
+
+  <rect x="40" y="130" width="200" height="52" rx="8" fill="#fff8f5" stroke="#c15f3c" stroke-width="1.3"/>
+  <text x="140" y="152" text-anchor="middle" font-size="13" font-weight="600" fill="#1f2328">adapter.mjs</text>
+  <text x="140" y="170" text-anchor="middle" font-size="11" fill="#656d76">the one file you edit</text>
+
+  <rect x="40" y="194" width="200" height="52" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="140" y="216" text-anchor="middle" font-size="13" font-weight="600" fill="#1f2328">datasets/cases/*.json</text>
+  <text x="140" y="234" text-anchor="middle" font-size="11" fill="#656d76">gold set from real failures</text>
+
+  <rect x="40" y="258" width="200" height="52" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="140" y="280" text-anchor="middle" font-size="13" font-weight="600" fill="#1f2328">groundwork.config.json</text>
+  <text x="140" y="298" text-anchor="middle" font-size="11" fill="#656d76">redaction · eval · gate</text>
+
+  <rect x="40" y="322" width="200" height="40" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="140" y="347" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1f2328">your document-QA system</text>
+
+  <!-- arrow repo -> check -->
+  <line x1="260" y1="220" x2="318" y2="220" stroke="#8b949e" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ============ groundwork check ============ -->
+  <rect x="322" y="60" width="280" height="320" rx="14" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="462" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">groundwork check</text>
+  <text x="462" y="112" text-anchor="middle" font-size="11.5" fill="#656d76">deterministic · offline · no LLM judge</text>
+
+  <rect x="342" y="130" width="240" height="62" rx="8" fill="#f0f6ff" stroke="#4a7db5" stroke-width="1.3"/>
+  <text x="462" y="152" text-anchor="middle" font-size="13" font-weight="600" fill="#1f2328">1 · Redaction pre-step</text>
+  <text x="462" y="170" text-anchor="middle" font-size="11" fill="#656d76">Redacta — identifiers become tokens,</text>
+  <text x="462" y="184" text-anchor="middle" font-size="11" fill="#656d76">locally, before anything is sent</text>
+
+  <rect x="342" y="204" width="240" height="88" rx="8" fill="#f0f6ff" stroke="#4a7db5" stroke-width="1.3"/>
+  <text x="462" y="226" text-anchor="middle" font-size="13" font-weight="600" fill="#1f2328">2 · Grounding eval</text>
+  <text x="462" y="244" text-anchor="middle" font-size="11" fill="#656d76">OpenGATE — anchored facts present ·</text>
+  <text x="462" y="258" text-anchor="middle" font-size="11" fill="#656d76">every number traces to the context ·</text>
+  <text x="462" y="272" text-anchor="middle" font-size="11" fill="#656d76">abstains when unanswerable</text>
+
+  <rect x="342" y="304" width="240" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="462" y="326" text-anchor="middle" font-size="13" font-weight="600" fill="#1f2328">results + token usage</text>
+  <text x="462" y="344" text-anchor="middle" font-size="11" fill="#656d76">feeds `groundwork cost`</text>
+
+  <!-- arrow check -> gate -->
+  <line x1="602" y1="220" x2="660" y2="220" stroke="#8b949e" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- ============ The gate ============ -->
+  <rect x="664" y="60" width="236" height="320" rx="14" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="782" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2328">The gate</text>
+  <text x="782" y="112" text-anchor="middle" font-size="11.5" fill="#656d76">GitHub Action, on every PR</text>
+
+  <rect x="684" y="130" width="196" height="58" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.3"/>
+  <text x="782" y="152" text-anchor="middle" font-size="13" font-weight="600" fill="#1f2328">baseline.*.json</text>
+  <text x="782" y="170" text-anchor="middle" font-size="11" fill="#656d76">the committed floor</text>
+
+  <rect x="684" y="204" width="196" height="58" rx="8" fill="#f2fbf5" stroke="#3d7a55" stroke-width="1.3"/>
+  <text x="782" y="226" text-anchor="middle" font-size="13" font-weight="600" fill="#1a5c35">≥ baseline → merge</text>
+  <text x="782" y="244" text-anchor="middle" font-size="11" fill="#3d7a55">reliability held</text>
+
+  <rect x="684" y="276" width="196" height="58" rx="8" fill="#fdf3f1" stroke="#b3402e" stroke-width="1.3"/>
+  <text x="782" y="298" text-anchor="middle" font-size="13" font-weight="600" fill="#94301f">&lt; baseline → red build</text>
+  <text x="782" y="316" text-anchor="middle" font-size="11" fill="#b3402e">fabrication named, not shipped</text>
+
+  <text x="782" y="362" text-anchor="middle" font-size="11" fill="#656d76">a human still reviews</text>
+  <text x="782" y="376" text-anchor="middle" font-size="11" fill="#656d76">high-stakes answers</text>
+
+  <!-- caption -->
+  <text x="460" y="416" text-anchor="middle" font-size="12" fill="#656d76">One command scaffolds the harness · one file connects your system · the gate keeps the floor from slipping</text>
+</svg>
