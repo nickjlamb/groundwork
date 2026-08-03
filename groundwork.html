@@ -210,6 +210,17 @@ npm run demo:break
   </section>
 
   <section class="gw-section gw-wrap">
+    <div class="gw-kicker">In Claude</div>
+    <h2 class="gw-serif">The same gate, conversationally</h2>
+    <p>Groundwork ships an <strong>MCP server</strong>, so Claude Code, Cowork, and Claude Desktop can run the checks as tools — scaffold a harness, run the full readiness gate on a repo, or paste a single question, context, and answer and get the deterministic verdict with named issues, no repo required. The conversational check imports the exact same gate logic as CI, so the two can never drift apart.</p>
+    <div class="gw-code">{ "mcpServers": { "groundwork": {
+    "command": "npx",
+    "args": ["-y", "-p", "@pharmatools/groundwork", "groundwork-mcp"]
+} } }</div>
+    <p>There's also an <strong>Agent Skill</strong> that teaches an agent to run the gate and report results honestly — including refusing to present a green check as a safety certification. Both ship in the npm package.</p>
+  </section>
+
+  <section class="gw-section gw-wrap">
     <div class="gw-honest">
       <div class="gw-kicker">Honestly</div>
       <h2 class="gw-serif">What Groundwork is not</h2>

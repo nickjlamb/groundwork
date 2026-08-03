@@ -12,6 +12,7 @@ test("initFiles returns the full scaffold with the project name interpolated", (
 
   for (const expected of [
     "GROUNDWORK.md",
+    "groundwork/DEPLOYMENT-LOG.md",
     ".github/workflows/groundwork.yml",
     "groundwork/adapter.mjs",
     "groundwork/groundwork.config.json",

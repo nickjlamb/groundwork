@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- `init` now scaffolds `groundwork/DEPLOYMENT-LOG.md` — the no-telemetry measurement story: time-to-production milestones, incidents the gate caught before users saw them, and the weekly gold-set habit, recorded by the partner in about a minute a week.
+
 ## [0.2.0] — 2026-08-03
 
 ### Added

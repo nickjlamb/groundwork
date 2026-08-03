@@ -28,6 +28,7 @@ const DESTINATIONS: Record<string, string> = {
   "adapter.mjs": "groundwork/adapter.mjs",
   "redaction.config.json": "groundwork/redaction.config.json",
   "GROUNDWORK.md": "GROUNDWORK.md",
+  "DEPLOYMENT-LOG.md": "groundwork/DEPLOYMENT-LOG.md",
   [join("workflows", "groundwork.yml")]: ".github/workflows/groundwork.yml",
 };
 

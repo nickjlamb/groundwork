@@ -57,6 +57,10 @@ Reads token usage from your eval runs and recommends the cheap wins in leverage 
 
 Once a week, read a handful of real transcripts. When one surprises you, turn it into a gold case (Step 3) — two minutes of work that permanently pins down the failure. The gold set growing out of real use is what turns this harness from scaffolding into judgment.
 
+## Step 7 — Keep the score honest
+
+Groundwork sends no telemetry — nothing about your system or users leaves your machines. So the measurement lives with you: **`groundwork/DEPLOYMENT-LOG.md`** tracks your time-to-production, the failures the gate caught before users saw them, and the weekly gold-set habit. A minute a week; it's also exactly what a supporting organisation will ask to see.
+
 ---
 
 *Scaffolded by [Groundwork](https://www.npmjs.com/package/@pharmatools/groundwork). These files are MIT-0 — yours, no attribution needed.*
