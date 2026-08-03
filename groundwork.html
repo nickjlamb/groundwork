@@ -78,7 +78,7 @@
   }
 
   /* Lesson cards */
-  .gw-lessons { counter-reset: lesson; display: grid; gap: 18px; margin-top: 28px; }
+  .gw-lessons { counter-reset: lesson -1; display: grid; gap: 18px; margin-top: 28px; }
   .gw-lesson {
     background: var(--gw-card); border: 1px solid var(--gw-line); border-radius: 14px;
     padding: 26px 28px 22px; position: relative;
@@ -98,6 +98,21 @@
     font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 13.5px;
     background: var(--gw-bg); padding: 2px 7px; border-radius: 6px; border: 1px solid var(--gw-line);
   }
+  .gw-check {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 13px;
+    color: var(--gw-good); margin-top: 10px; padding-left: 46px;
+  }
+  .gw-time {
+    float: right; font-size: 12.5px; color: var(--gw-muted); background: var(--gw-bg);
+    border: 1px solid var(--gw-line); border-radius: 100px; padding: 3px 12px; margin-top: 2px;
+  }
+  .gw-sabotage {
+    background: var(--gw-code-bg); color: var(--gw-code-ink); border-radius: 16px;
+    padding: 30px 34px; margin-top: 22px;
+  }
+  .gw-sabotage .gw-kicker { color: #f0a08e; }
+  .gw-sabotage h3 { font-size: 21px; margin-bottom: 10px; color: #ffffff; }
+  .gw-sabotage p { color: #b8b6ac; font-size: 15.5px; margin-bottom: 8px; max-width: 100%; }
 
   /* Honest limits */
   .gw-honest {
@@ -166,25 +181,52 @@ npm run demo:break
   </section>
 
   <section class="gw-section gw-wrap">
-    <div class="gw-kicker">The method</div>
-    <h2 class="gw-serif">Four steps, one afternoon</h2>
+    <div class="gw-kicker">The course</div>
+    <h2 class="gw-serif">Six lessons, about two hours</h2>
+    <p>Every lesson ends with a checkpoint you can <em>verify</em> — not "you have read this," but "this specific thing now works on your machine." More than half the time goes to Lesson 3, because writing gold cases is the part that's actually yours. <a href="https://github.com/nickjlamb/groundwork/tree/main/docs/course" style="color:var(--gw-accent);font-weight:600;text-decoration:none;">Take it on GitHub →</a></p>
     <div class="gw-lessons">
       <div class="gw-lesson">
+        <span class="gw-time">10 min</span>
+        <h3 class="gw-serif">Orientation — see the gate fail correctly</h3>
+        <p>Run the whole loop on a toy system, then flip it into fabrication mode. You don't trust a safety gate you've never seen catch something.</p>
+        <div class="gw-check">✓ demo green, demo:break red — on your machine</div>
+      </div>
+      <div class="gw-lesson">
+        <span class="gw-time">15 min</span>
         <h3 class="gw-serif">Wire your system — one file</h3>
         <p>Edit <span class="gw-mono">groundwork/adapter.mjs</span>: it receives <span class="gw-mono">{ question, context }</span> and returns <span class="gw-mono">{ text }</span>. HTTP endpoint or local module — the eval never touches your system except through this file.</p>
+        <div class="gw-check">✓ a one-liner returns your system's answer</div>
       </div>
       <div class="gw-lesson">
-        <h3 class="gw-serif">Redact before anything leaves the machine</h3>
-        <p>Every question and context runs through a deterministic redaction pass (Redacta) first — identifiers become labelled tokens locally. The same ~40 lines belong in your production path, so what you evaluate is what you ship.</p>
+        <span class="gw-time">10 min</span>
+        <h3 class="gw-serif">The privacy pre-step — and where it stops</h3>
+        <p>Identifiers become labelled tokens locally, before anything is sent. You'll also learn the honest boundary: keyword-anchored redaction won't catch names in free prose — that stays with your review process, on purpose.</p>
+        <div class="gw-check">✓ a synthetic identifier comes back as a token</div>
       </div>
       <div class="gw-lesson">
-        <h3 class="gw-serif">Build your gold set from real failures</h3>
-        <p>Every case comes from a question a user really asked or a failure you really saw. Anchors pin the facts a correct answer must contain; every number must trace to your documents; and at least one case must be <em>unanswerable</em> — where the only correct behaviour is to say so.</p>
+        <span class="gw-time">45+ min</span>
+        <h3 class="gw-serif">Gold cases from real failures</h3>
+        <p>The rule of the house: every case comes from a question a user really asked or a failure you really saw. Anchors pin required facts; every number must trace to your documents; at least two cases must be <em>unanswerable</em> — where the only correct behaviour is to say so.</p>
+        <div class="gw-check">✓ five real cases running; every anchor defensible out loud</div>
       </div>
       <div class="gw-lesson">
-        <h3 class="gw-serif">Freeze a baseline, gate your CI</h3>
-        <p><span class="gw-mono">groundwork check --baseline</span> makes a good run the floor. The scaffolded GitHub Action fails any pull request that scores below it. Reliability can't quietly regress.</p>
+        <span class="gw-time">20 min</span>
+        <h3 class="gw-serif">The gate — freeze a floor, then try to break it</h3>
+        <p><span class="gw-mono">check --baseline</span> makes a good run the floor; the scaffolded GitHub Action fails any pull request below it. Then comes the course's signature move — see below.</p>
+        <div class="gw-check">✓ sabotage PR red · revert green · nothing merged</div>
       </div>
+      <div class="gw-lesson">
+        <span class="gw-time">15 min</span>
+        <h3 class="gw-serif">Costs and the habit</h3>
+        <p>Measured token usage, savings in leverage order — and the two habits that keep the harness alive: weekly transcripts into gold cases, and a deployment log that is your measurement, because Groundwork sends no telemetry at all.</p>
+        <div class="gw-check">✓ cost shows real usage; log's first row filled</div>
+      </div>
+    </div>
+    <div class="gw-sabotage">
+      <div class="gw-kicker">The sabotage test</div>
+      <h3 class="gw-serif">Break your own system on purpose</h3>
+      <p>A gate you've never seen fail is a gate you're trusting on faith. On a branch, make your system worse deliberately — tell the prompt to "give your best estimate even if the documents don't say." Open the PR. Watch CI go red with the failures named. Revert, watch it go green.</p>
+      <p>That red build is exactly what a well-meaning teammate's bad prompt change will look like six months from now — except now you've already proven it gets caught.</p>
     </div>
   </section>
 
@@ -225,6 +267,7 @@ npm run demo:break
       <div class="gw-kicker">Honestly</div>
       <h2 class="gw-serif">What Groundwork is not</h2>
       <p>Groundwork is a strong floor, not a guarantee. It automates the checks that can be automated — redaction, grounding, regression gating, cost hygiene. It cannot certify an AI system safe, and it does not replace human review for answers that affect someone's health, money, legal standing, or safety. Keep a person in that loop. That is not a limitation of this tool so much as the current state of the field, stated plainly.</p>
+      <p style="margin-top:12px;">The course's completion checklist ends the same way: after the machine-checkable part comes the human part — <strong>a named person reviews high-stakes outputs before they reach the person they affect, and everyone on the team can say who.</strong> That item isn't a transitional arrangement to be automated away later; it's part of the design.</p>
     </div>
   </section>
 

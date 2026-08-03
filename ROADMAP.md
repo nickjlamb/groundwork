@@ -11,7 +11,6 @@ Directional, not promised — items ship when they're done properly, and the ord
 
 ## Medium term (0.3.x)
 
-- **Retrieval scoring for document QA** — when the adapter exposes retrieval, score whether the right passage was found before scoring the answer (OpenGATE already has the scorer; wire the archetype).
 - **A second worked example** — a different domain (legal or local-government documents) to show the harness isn't pharma-shaped.
 - **Gold-case pattern library** — documented case patterns from real deployments: dose-ceiling traps, entity-confusion pairs, near-miss abstentions.
 

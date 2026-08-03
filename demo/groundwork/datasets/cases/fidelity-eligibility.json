@@ -1,0 +1,24 @@
+{
+  "id": "fidelity-eligibility",
+  "kind": "retrieval",
+  "description": "The eligibility section must survive ingestion intact — both conditions, hand-copied from the source document.",
+  "recordId": "eligibility",
+  "requireFields": [
+    "title",
+    "body"
+  ],
+  "anchors": [
+    {
+      "field": "body",
+      "contains": "resident of the borough"
+    },
+    {
+      "field": "body",
+      "contains": "household income below the published threshold"
+    },
+    {
+      "field": "title",
+      "contains": "Eligibility"
+    }
+  ]
+}

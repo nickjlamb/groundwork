@@ -35,7 +35,13 @@ async function redactIfEnabled(text) {
 // ---------------------------------------------------------------------------
 // The "system" — local, extractive, abstains when unsure
 // ---------------------------------------------------------------------------
-import { answerLocally } from "../system.mjs";
+import { answerLocally, fetchSection } from "../system.mjs";
+
+// Retrieval-fidelity capability: serve document sections by stable ID so the
+// eval can verify ingestion hasn't silently truncated or garbled them.
+export async function fetchRecord({ id }) {
+  return { record: fetchSection(id) };
+}
 
 export async function answer({ question, context }) {
   const ctx = Array.isArray(context) ? context.join("\n") : String(context ?? "");

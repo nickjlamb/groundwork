@@ -6,6 +6,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Added
 
+- **Retrieval fidelity for document QA** — adapters can expose `fetchRecord({ id })` and add gold cases of kind `"retrieval"`: hand-copied anchors from the source document that catch ingestion regressions (truncated bodies, dropped titles, garbled fields) before they silently poison every grounded answer downstream. Scaffolded as an opt-in block in the adapter template plus `_template-retrieval.json`; the demo now exercises it in both pass and break modes.
 - **The course** (`docs/course/`) — six checkpoint-driven lessons from prototype to gated deployment, including the sabotage test (deliberately break your system on a branch; prove CI catches it) and a completion checklist whose final item is the one no tool can check.
 - `init` now scaffolds `groundwork/DEPLOYMENT-LOG.md` — the no-telemetry measurement story: time-to-production milestones, incidents the gate caught before users saw them, and the weekly gold-set habit, recorded by the partner in about a minute a week.
 

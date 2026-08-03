@@ -27,6 +27,8 @@ test("demo passes offline: full recall, full abstention, no ungrounded numbers",
   assert.match(res.stdout, /answer_recall\s+100\.0%/);
   assert.match(res.stdout, /abstention_rate\s+100\.0%/);
   assert.match(res.stdout, /ungrounded_numbers\s+0/);
+  assert.match(res.stdout, /✓ retrieval\s+PASS/);
+  assert.match(res.stdout, /failed_checks\s+0/);
 });
 
 test("demo:break fails loudly: fabricated figures and missed abstentions are named", () => {
@@ -35,4 +37,6 @@ test("demo:break fails loudly: fabricated figures and missed abstentions are nam
   assert.match(res.stdout, /✗ grounding\s+FAIL/);
   assert.match(res.stdout, /ungrounded number "14"/);
   assert.match(res.stdout, /did not abstain/);
+  assert.match(res.stdout, /✗ retrieval\s+FAIL/);
+  assert.match(res.stdout, /FIDELITY fidelity-savings.*missing "£16,000"/);
 });

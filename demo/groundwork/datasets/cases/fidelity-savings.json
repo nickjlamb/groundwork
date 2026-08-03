@@ -1,0 +1,16 @@
+{
+  "id": "fidelity-savings",
+  "kind": "retrieval",
+  "description": "The savings figure must survive ingestion — a truncated body here poisons every savings answer downstream.",
+  "recordId": "savings",
+  "requireFields": [
+    "title",
+    "body"
+  ],
+  "anchors": [
+    {
+      "field": "body",
+      "contains": "£16,000"
+    }
+  ]
+}

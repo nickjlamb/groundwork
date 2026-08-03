@@ -26,6 +26,12 @@ Three things, deterministically — no LLM judge, so results are reproducible an
 2. **No fabricated numbers** — every number in the answer traces to the context, the question, or an anchor.
 3. **Abstention** — on unanswerable cases, the answer declines rather than invents.
 
+## Optional: retrieval fidelity cases
+
+If your adapter exposes `fetchRecord` (see the commented block in `adapter.mjs`), cases of kind `"retrieval"` guard the layer *underneath* grounding: the sections your ingestion pipeline serves. A chunking change that truncates a section, drops a title, or garbles a field poisons every answer grounded on it afterwards — and nothing in the answers themselves will look wrong.
+
+Use `_template-retrieval.json`. The one rule that makes these cases meaningful: **anchors are hand-copied from the source document, never from your system's output.** If you copy from your system, you're pinning its current bugs as ground truth. Two or three cases covering your most load-bearing sections is enough to catch a bad ingestion deploy.
+
 ## What it cannot verify
 
 A deterministic check cannot tell you an answer is *good* — well-phrased, appropriately hedged, kind. It tells you the answer is grounded. That is the floor, and it is worth gating on, but it is not the ceiling: keep reading real transcripts, and keep a human in the loop for any answer that affects someone's health, money, legal standing, or safety.

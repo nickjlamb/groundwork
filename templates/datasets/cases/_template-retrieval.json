@@ -1,0 +1,11 @@
+{
+  "id": "REPLACE-fidelity-slug",
+  "kind": "retrieval",
+  "description": "One line: which section this pins, and why damage here would matter downstream.",
+  "recordId": "the-stable-id-your-system-serves-this-section-under",
+  "requireFields": ["title", "body"],
+  "anchors": [
+    { "field": "body", "contains": "a distinctive phrase HAND-COPIED from the source document, never from your system's output" },
+    { "field": "title", "contains": "expected title text" }
+  ]
+}

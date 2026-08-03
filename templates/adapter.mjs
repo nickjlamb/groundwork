@@ -87,3 +87,19 @@ export async function answer({ question, context }) {
   const data = await res.json();
   return { text: data.text ?? data.answer ?? "" };
 }
+
+// ---------------------------------------------------------------------------
+// OPTIONAL — retrieval fidelity (uncomment to enable)
+// ---------------------------------------------------------------------------
+// If your system serves document sections/records by stable ID (most RAG
+// ingestion pipelines do), expose that here and add gold cases of kind
+// "retrieval". The eval then verifies ingestion hasn't silently truncated,
+// dropped, or garbled fields — a bug that poisons every answer grounded on
+// the damaged section. Anchors are hand-copied from the SOURCE document,
+// never from your system's output.
+//
+// export async function fetchRecord({ id }) {
+//   const res = await fetch(`${BASE}/sections/${encodeURIComponent(id)}`);
+//   if (!res.ok) throw new Error(`section fetch ${res.status}`);
+//   return { record: await res.json() }; // e.g. { id, title, body }
+// }

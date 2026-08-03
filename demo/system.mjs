@@ -18,6 +18,42 @@ const STOPWORDS = new Set([
 const contentWords = (s) =>
   (s.toLowerCase().match(/[a-z£0-9]+/g) ?? []).filter((w) => !STOPWORDS.has(w));
 
+// ---------------------------------------------------------------------------
+// The demo's "retrieval layer": document sections served by stable ID, the way
+// a real doc-QA system's ingestion pipeline serves chunks. The retrieval
+// fidelity scorer checks these against hand-copied anchors from the source
+// document — because a silent ingestion bug (truncated body, dropped title)
+// poisons every answer grounded on the section afterwards.
+// ---------------------------------------------------------------------------
+const SECTIONS = {
+  eligibility: {
+    id: "eligibility",
+    title: "Eligibility",
+    body: "To be eligible for housing support you must be a current resident of the borough and have a household income below the published threshold.",
+  },
+  savings: {
+    id: "savings",
+    title: "Savings limit",
+    body: "Applicants may hold savings of up to £16,000 and still qualify for the programme.",
+  },
+  "opening-hours": {
+    id: "opening-hours",
+    title: "Support office opening hours",
+    body: "The support office is open Monday to Friday, from 9am to 5pm, at the Civic Centre.",
+  },
+};
+
+export function fetchSection(id) {
+  const section = SECTIONS[id];
+  if (!section) return null;
+  if (process.env.DEMO_FABRICATE === "1") {
+    // Real ingestion failure mode: a chunking change truncates the body and
+    // drops the title — and everything downstream quietly grounds on less.
+    return { id: section.id, title: "", body: section.body.slice(0, 40) };
+  }
+  return { ...section };
+}
+
 /**
  * @param {{ question: string, context: string }} input
  * @returns {{ text: string }}

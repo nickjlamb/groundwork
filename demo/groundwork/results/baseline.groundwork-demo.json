@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-08-03T15:41:36.459Z",
-  "sha": "1c062ce",
+  "timestamp": "2026-08-03T18:17:18.831Z",
+  "sha": "b1edf70",
   "online": true,
   "adapter": "groundwork-demo",
   "results": [
@@ -61,8 +61,14 @@
         "id": "retrieval",
         "mode": "online"
       },
-      "skipped": true,
-      "reason": "adapter \"groundwork-demo\" has no retrieval capability"
+      "metrics": {
+        "n_cases": 2,
+        "n_checks": 8,
+        "fidelity": 1,
+        "failed_checks": 0
+      },
+      "failures": [],
+      "passed": true
     },
     {
       "id": "grounding",

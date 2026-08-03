@@ -23,6 +23,10 @@ Use the same pattern in production: the ~40 lines at the top of the adapter are 
 
 Open **`groundwork/datasets/LABELLING.md`** and replace the three example cases in `groundwork/datasets/cases/` with your own. The rule of the house: every case comes from a question a user really asked or a failure you really saw. Keep at least one *unanswerable* case — when the documents can't answer, your system must say so rather than invent.
 
+## Step 3½ (optional) — Guard the layer under the answers
+
+If your system serves document sections by stable ID, uncomment `fetchRecord` in the adapter and add two or three cases of kind `"retrieval"` (see `_template-retrieval.json`): hand-copied anchors from your most load-bearing sections. This catches the failure grounding checks can't see — an ingestion change that truncates or garbles a section, silently poisoning every answer built on it.
+
 ## Step 4 — Run the check
 
 ```bash

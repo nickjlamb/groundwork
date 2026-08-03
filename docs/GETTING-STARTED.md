@@ -97,6 +97,12 @@ A case looks like this:
 
 Three habits make cases robust. Keep each anchor to the shortest distinctive phrase a correct answer must contain, and put acceptable rephrasings in `aliases` rather than making the anchor long. Leave `allowedNewNumbers` empty unless an answer legitimately introduces a number the context doesn't contain (a computed total, say) — everything else numeric must trace to the context or the case fails. And always keep at least one case with `"answerable": false`: a question your documents *cannot* answer, where the only correct behaviour is to say so. Unanswerable questions are where document-QA systems fail most dangerously, and where the example systems people demo never get tested.
 
+## 5½. Optional: guard the layer under the answers
+
+Grounding checks verify answers against the context they were given — but if your ingestion pipeline serves a truncated or garbled section, every answer grounded on it inherits the damage, and nothing in the answers will look wrong. If your system serves sections by stable ID, uncomment `fetchRecord` in the adapter and add two or three cases of kind `"retrieval"` (template: `_template-retrieval.json`): `requireFields` plus anchors **hand-copied from the source document, never from your system's output**. The demo shows the failure mode: `npm run demo:break` truncates a section's ingestion and the gate names it — `FIDELITY fidelity-savings: body missing "£16,000"`.
+
+(For PubMed-shaped systems, `fetchRecord` can wrap a structured retrieval layer like [PubCrawl](https://www.npmjs.com/package/@pharmatools/pubcrawl) — the scorer's field/anchor checks were built for exactly that record shape.)
+
 ## 6. Run the check
 
 ```bash
