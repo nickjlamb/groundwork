@@ -4,10 +4,12 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-08-03
+
 ### Added
 
 - **MCP server** (`groundwork-mcp`, stdio) — the same deterministic checks as MCP tools for Claude Code, Cowork, and Claude Desktop: `check_readiness`, `check_answer_grounding` (single answer, shares OpenGATE's exact gate logic), `scaffold_harness`, `cost_summary`. Every result carries the floor-not-guarantee caveat.
-- **Agent Skill** (`skills/groundwork-readiness/`) — teaches an agent to detect a harness, run the gate, read results honestly, and refuse to present green checks as safety certification.
+- **Agent Skill** (`skills/groundwork-readiness/`) — teaches an agent to detect a harness, run the gate, read results honestly, and refuse to present green checks as safety certification. Ships in the npm package.
 
 ## [0.1.0] — 2026-08-03
 
@@ -23,5 +25,6 @@ First public release.
 - Committed regression baselines for the demo and the example, enforced by the test suite.
 - Docs: `docs/GETTING-STARTED.md` walkthrough; website at [pharmatools.ai/groundwork](https://www.pharmatools.ai/groundwork).
 
-[Unreleased]: https://github.com/nickjlamb/groundwork/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/nickjlamb/groundwork/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/nickjlamb/groundwork/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/nickjlamb/groundwork/releases/tag/v0.1.0

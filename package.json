@@ -1,8 +1,8 @@
 {
   "name": "@pharmatools/groundwork",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
-  "description": "Groundwork \u2014 a deployment-readiness harness for document-QA AI systems. Scaffolds redaction, grounding evals, a CI regression gate, and a guided playbook into your repo, so a small team can take a prototype to safe production.",
+  "description": "Groundwork — a deployment-readiness harness for document-QA AI systems. Scaffolds redaction, grounding evals, a CI regression gate, and a guided playbook into your repo, so a small team can take a prototype to safe production.",
   "license": "MIT",
   "author": "Nick Lamb (https://www.pharmatools.ai)",
   "repository": {
