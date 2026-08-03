@@ -37,6 +37,8 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "npm run build && node --test test/*.test.mjs",
+    "demo": "node dist/cli.js check --dir demo",
+    "demo:break": "DEMO_FABRICATE=1 node dist/cli.js check --dir demo",
     "prepublishOnly": "npm test"
   },
   "dependencies": {

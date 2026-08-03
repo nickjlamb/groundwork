@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+      - name: Offline demo must pass
+        run: npm run demo
+      - name: Fabricating demo must fail
+        run: |
+          if npm run demo:break; then
+            echo "demo:break exited 0 — the gate failed to catch fabrication" >&2
+            exit 1
+          fi

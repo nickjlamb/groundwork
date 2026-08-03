@@ -1,0 +1,6 @@
+{
+  "categories": ["clinical", "general"],
+  "notes": [
+    "Demo copy of the scaffolded redaction config — see templates/redaction.config.json for the full notes."
+  ]
+}

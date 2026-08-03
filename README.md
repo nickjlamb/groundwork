@@ -17,6 +17,17 @@ npx @pharmatools/groundwork init
 - **A cost profiler** — measures token usage and recommends the cheap wins (caching, batching) in leverage order.
 - **A playbook** (`GROUNDWORK.md`) that walks a non-ML team through all of it.
 
+## See it work in 60 seconds — no API key
+
+```bash
+git clone <this repo> && cd groundwork
+npm install && npm run build
+npm run demo          # the whole loop passes, fully offline
+npm run demo:break    # the system starts fabricating — the gate catches it by name
+```
+
+[`demo/`](demo/) is a miniature partner repo: a tiny local document-QA system wrapped in the exact harness `init` scaffolds. The second command is the product in one line: a system that invents a figure or answers when it should abstain turns the build red.
+
 ## What Groundwork is not
 
 Groundwork is a strong **floor**, not a guarantee. Deterministic checks catch the failures that can be caught deterministically; they cannot certify an AI system safe. For high-stakes outputs — anything touching health, legal standing, benefits, or safety — a human must review before the answer reaches the person it affects. The scaffolded playbook says this too, on purpose, where your team will read it.
