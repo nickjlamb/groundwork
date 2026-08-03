@@ -75,6 +75,16 @@ groundwork cost                  measured token usage + savings, in leverage ord
 
 The full walkthrough — install to gated CI in about half an hour — is in [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md). The scaffolded playbook (`GROUNDWORK.md`) repeats it inside your repo, where your team will actually read it.
 
+## Use from Claude
+
+The same checks ship as an **MCP server** (`groundwork-mcp`, stdio) so Claude Code, Cowork, or Claude Desktop can run them conversationally — `check_readiness` on a repo, `check_answer_grounding` on a single answer (no repo needed), `scaffold_harness`, `cost_summary`:
+
+```json
+{ "mcpServers": { "groundwork": { "command": "npx", "args": ["-y", "-p", "@pharmatools/groundwork", "groundwork-mcp"] } } }
+```
+
+There's also an **Agent Skill** ([`skills/groundwork-readiness/`](skills/groundwork-readiness/)) that teaches an agent to run the gate and report results honestly — including refusing to present a green check as a safety certification.
+
 ## What Groundwork is not
 
 Groundwork is a strong **floor**, not a guarantee. Deterministic checks catch the failures that can be caught deterministically; they cannot certify an AI system safe. For high-stakes outputs — anything touching health, money, legal standing, or safety — a human must review before the answer reaches the person it affects. The scaffolded playbook says this too, on purpose.

@@ -4,6 +4,11 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- **MCP server** (`groundwork-mcp`, stdio) — the same deterministic checks as MCP tools for Claude Code, Cowork, and Claude Desktop: `check_readiness`, `check_answer_grounding` (single answer, shares OpenGATE's exact gate logic), `scaffold_harness`, `cost_summary`. Every result carries the floor-not-guarantee caveat.
+- **Agent Skill** (`skills/groundwork-readiness/`) — teaches an agent to detect a harness, run the gate, read results honestly, and refuse to present green checks as safety certification.
+
 ## [0.1.0] — 2026-08-03
 
 First public release.
