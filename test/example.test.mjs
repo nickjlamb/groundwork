@@ -13,7 +13,13 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const RESULTS = join(ROOT, "examples", "claude-doc-qa", "groundwork", "results");
 
 test("example passes offline against the mock API, capturing usage", () => {
-  rmSync(RESULTS, { recursive: true, force: true });
+  // Clear old run artifacts but NEVER baseline.* — those are committed, and
+  // deleting them would silently disable the --ci regression gate below.
+  if (existsSync(RESULTS)) {
+    for (const name of readdirSync(RESULTS)) {
+      if (!name.startsWith("baseline.")) rmSync(join(RESULTS, name), { force: true });
+    }
+  }
 
   const res = spawnSync(
     process.execPath,
