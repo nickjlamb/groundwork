@@ -1,0 +1,50 @@
+{
+  "name": "@pharmatools/groundwork",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Groundwork — a deployment-readiness harness for document-QA AI systems. Scaffolds redaction, grounding evals, a CI regression gate, and a guided playbook into your repo, so a small team can take a prototype to safe production.",
+  "license": "MIT",
+  "author": "Nick Lamb (https://www.pharmatools.ai)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickjlamb/groundwork.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "groundwork": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist/",
+    "templates/",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "deployment-readiness",
+    "rag",
+    "grounding",
+    "evaluation",
+    "redaction",
+    "document-qa",
+    "scaffolder"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "dependencies": {
+    "@pharmatools/opengate": "^0.9.0",
+    "@pharmatools/redacta": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  }
+}
