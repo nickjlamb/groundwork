@@ -9,6 +9,10 @@
     "type": "git",
     "url": "https://github.com/nickjlamb/groundwork.git"
   },
+  "homepage": "https://www.pharmatools.ai/groundwork",
+  "bugs": {
+    "url": "https://github.com/nickjlamb/groundwork/issues"
+  },
   "engines": {
     "node": ">=18"
   },
