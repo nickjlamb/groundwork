@@ -28,8 +28,8 @@ The toy system is now doing what real systems do when a prompt changes badly: ap
 
 You can point at, in your own terminal:
 
-- [ ] `npm run demo` → `✓ grounding PASS`, exit 0
-- [ ] `npm run demo:break` → red, exit 1, with **named** failures: `ungrounded number "14"` (three times) and `did not abstain` (twice)
+- [ ] `npm run demo` → `✓ grounding PASS` and `✓ retrieval PASS`, exit 0
+- [ ] `npm run demo:break` → red, exit 1, with **named** failures of both kinds: `ungrounded number "14"` and `did not abstain` from the grounding gate, and `FIDELITY … body missing "£16,000"` from the retrieval gate — the break mode also simulates an ingestion bug that truncates document sections
 
 ## What to take from it
 

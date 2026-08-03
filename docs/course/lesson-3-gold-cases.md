@@ -32,6 +32,10 @@ Failures now are *information*, not defeat. `missing answer fact` on a correct-l
 - [ ] `npx groundwork check` runs them — the `grounding` row shows `n_cases: 5`, not SKIPPED
 - [ ] You can defend every anchor out loud: "a correct answer must contain this because…"
 
+## Optional extension — guard the layer under the answers
+
+If your system serves document sections by stable ID, there's a second kind of case worth two or three of: `"kind": "retrieval"` (template: `_template-retrieval.json`), which pins your most load-bearing sections with anchors **hand-copied from the source document**. It catches what grounding checks can't see — an ingestion change that truncates or garbles a section, silently poisoning every answer built on it. Setup is a commented block in your adapter; the walkthrough's [§5½](../GETTING-STARTED.md#5%C2%BD-optional-guard-the-layer-under-the-answers) has the details.
+
 ## Judgment call, flagged
 
 What counts as "correct" for your users is yours, not Groundwork's. The tool checks that answers carry your anchors and invent nothing; *choosing* the anchors is domain expertise. If you're unsure about a case, that uncertainty usually means the underlying document is ambiguous — which is worth knowing all by itself.

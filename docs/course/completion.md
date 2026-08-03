@@ -7,6 +7,7 @@ Work through honestly; the last item is the one no tool can check.
 - [ ] Adapter wired; `onlineConfigHint()` says something a teammate would understand
 - [ ] Redaction self-test passing; the free-prose boundary understood by everyone who touches sensitive text
 - [ ] Gold set of real cases, including unanswerable ones, each anchor defensible out loud
+- [ ] *(If your system serves sections by ID)* retrieval fidelity cases pinning your most load-bearing sections, anchors hand-copied from the source
 - [ ] Baseline committed; CI gate live; **sabotage test performed and caught**
 - [ ] Costs measured; caching considered before model changes
 - [ ] `DEPLOYMENT-LOG.md` started; weekly transcript habit scheduled
