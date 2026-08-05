@@ -86,6 +86,7 @@ For extraction, one schema choice does most of the safety work: **nullability is
 | [`demo/`](demo/) | Document QA: the full loop on a tiny local system — and the gate catching fabrication by name. Zero network. | `npm run demo` / `npm run demo:break` |
 | [`demo-extraction/`](demo-extraction/) | Structured extraction: schema validation, field accuracy, and the gate naming a guessed date of birth and a dropped required field. Zero network. | `npm run demo:extraction` / `npm run demo:extraction:break` |
 | [`examples/claude-doc-qa/`](examples/claude-doc-qa/) | A real Claude-backed system: answer-from-document-only prompting, prompt caching, key-gated evals, measured usage feeding `groundwork cost` — plus a mock API so the whole loop runs offline in CI. | `npm run example:mock` (offline) / `npm run example:check` (live) |
+| [`examples/claude-extraction/`](examples/claude-extraction/) | Claude filling a schema from fictional referral letters: unknown → null in the prompt contract, the schema as the cached prefix, and the gate catching a guessed date of birth — plus a mock API for offline CI. | `npm run example:extraction:mock` (offline) / `npm run example:extraction:check` (live) |
 
 ## Commands
 

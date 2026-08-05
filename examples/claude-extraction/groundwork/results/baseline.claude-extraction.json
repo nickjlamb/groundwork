@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-08-05T08:41:13.510Z",
+  "sha": "5ddc22a",
+  "online": true,
+  "adapter": "claude-extraction",
+  "results": [
+    {
+      "id": "citation-detection",
+      "meta": {
+        "id": "citation-detection",
+        "mode": "offline"
+      },
+      "metrics": {
+        "perClaim_exactSetRate": 1,
+        "perClaim_jaccardMean": 0,
+        "supportedStyle_accuracy": 1,
+        "knownGap_styles": []
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "claim-extraction",
+      "meta": {
+        "id": "claim-extraction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-extraction\" has no QA capability"
+    },
+    {
+      "id": "verdict-accuracy",
+      "meta": {
+        "id": "verdict-accuracy",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-extraction\" has no QA capability"
+    },
+    {
+      "id": "redaction",
+      "meta": {
+        "id": "redaction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-extraction\" has no redaction capability"
+    },
+    {
+      "id": "simplification",
+      "meta": {
+        "id": "simplification",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-extraction\" has no simplify capability"
+    },
+    {
+      "id": "retrieval",
+      "meta": {
+        "id": "retrieval",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-extraction\" has no retrieval capability"
+    },
+    {
+      "id": "grounding",
+      "meta": {
+        "id": "grounding",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"claude-extraction\" has no grounding capability"
+    },
+    {
+      "id": "extraction",
+      "meta": {
+        "id": "extraction",
+        "mode": "online"
+      },
+      "metrics": {
+        "n_cases": 3,
+        "n_fields": 18,
+        "field_accuracy": 1,
+        "value_precision": 1,
+        "value_recall": 1,
+        "fabricated_fields": 0,
+        "missed_fields": 0,
+        "schema_failures": 0,
+        "abstention_rate": 1
+      },
+      "failures": [],
+      "passed": true
+    }
+  ]
+}

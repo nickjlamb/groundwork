@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- **Claude-backed extraction example** (`examples/claude-extraction/`) — the archetype's success test against a real model: Claude fills one schema from three fictional referral letters, with the extraction contract in the prompt (every field present; unknown → null, never guessed), the schema as the cached prefix (the mirror image of document QA's cached document), key-gated evals, usage feeding `groundwork cost`, and a mock Anthropic API so the whole loop runs offline in CI — including a `MOCK_FABRICATE=1` mode proving the gate names a guessed date of birth.
+
 ## [0.4.0] — 2026-08-04
 
 The second archetype. Groundwork's units are deployment patterns, not products — `groundwork init <archetype>` scaffolds the whole harness for one. This release adds **structured extraction**: documents → structured fields → schema validation → human review.

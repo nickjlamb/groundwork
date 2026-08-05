@@ -1,0 +1,6 @@
+{
+  "categories": ["clinical", "general"],
+  "notes": [
+    "Clinical + general identifier passes, as a service handling referrals should run. The fictional referrals contain no identifiers; the pre-step is here because real ones do — and it is why the fields you gate on should be business fields, not the identifiers redaction strips."
+  ]
+}

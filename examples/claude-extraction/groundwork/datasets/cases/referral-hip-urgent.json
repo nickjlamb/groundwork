@@ -1,0 +1,34 @@
+{
+  "id": "referral-hip-urgent",
+  "kind": "extraction",
+  "description": "An urgent referral with a stated deadline: the deadline must be extracted here — and only here, because this is the one letter that states one.",
+  "document": "Community physiotherapy referral, received 4 May 2026. The patient reports reduced mobility following hip surgery. A course of 12 sessions is requested. Referred by the discharge team; the case is marked urgent. An appointment is required by 11 May 2026.",
+  "schema": {
+    "type": "object",
+    "required": ["referral_date", "reason", "urgency", "sessions_requested", "appointment_required_by", "date_of_birth"],
+    "properties": {
+      "referral_date": { "type": "string", "description": "Date the referral was received — always stated" },
+      "reason": { "type": "string", "description": "Why the patient was referred" },
+      "urgency": { "type": "string", "enum": ["routine", "urgent"] },
+      "sessions_requested": { "type": ["integer", "null"], "description": "Number of sessions requested, if the letter states one" },
+      "appointment_required_by": { "type": ["string", "null"], "description": "A deadline date, only if the letter states one" },
+      "date_of_birth": { "type": ["string", "null"], "description": "Only if the letter states it — null otherwise" }
+    },
+    "additionalProperties": false
+  },
+  "gold": {
+    "referral_date": "2026-05-04",
+    "reason": "reduced mobility following hip surgery",
+    "urgency": "urgent",
+    "sessions_requested": 12,
+    "appointment_required_by": "2026-05-11",
+    "date_of_birth": null
+  },
+  "normalize": {
+    "referral_date": "date",
+    "appointment_required_by": "date",
+    "date_of_birth": "date",
+    "sessions_requested": "number"
+  },
+  "aliases": {}
+}

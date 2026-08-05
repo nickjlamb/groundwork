@@ -52,6 +52,8 @@
     "demo:extraction:break": "DEMO_FABRICATE=1 node dist/cli.js check --dir demo-extraction",
     "example:mock": "node examples/claude-doc-qa/run-mock.mjs",
     "example:check": "node dist/cli.js check --dir examples/claude-doc-qa",
+    "example:extraction:mock": "node examples/claude-extraction/run-mock.mjs",
+    "example:extraction:check": "node dist/cli.js check --dir examples/claude-extraction",
     "prepublishOnly": "npm test"
   },
   "dependencies": {

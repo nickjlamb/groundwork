@@ -1,0 +1,20 @@
+{
+  "project": "claude-extraction",
+  "archetype": "extraction",
+  "redaction": {
+    "enabled": true,
+    "configFile": "./groundwork/redaction.config.json"
+  },
+  "eval": {
+    "adapter": "./groundwork/adapter.mjs",
+    "datasets": "./groundwork/datasets",
+    "results": "./groundwork/results"
+  },
+  "gate": {
+    "failBuildOnRegression": true
+  },
+  "review": {
+    "humanInLoop": true,
+    "notes": "This example extracts records from FICTIONAL referral letters. In a real service, a person reviews each extracted record before it enters a case file or feeds a decision — the gate measures faithfulness to the document, it does not certify the record fit for the decision."
+  }
+}
