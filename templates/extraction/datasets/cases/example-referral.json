@@ -1,0 +1,30 @@
+{
+  "id": "example-referral",
+  "kind": "extraction",
+  "description": "A routine referral: every stated field extracted, the unstated date of birth left null — a value there would be the extraction hallucination.",
+  "document": "Housing support referral, received 14 March 2026. The resident reports persistent damp and mould in the property affecting one bedroom. Referred by the tenancy support team; the case is marked routine. The resident can be contacted through the tenancy support office.",
+  "schema": {
+    "type": "object",
+    "required": ["referral_date", "reason", "urgency", "date_of_birth"],
+    "properties": {
+      "referral_date": { "type": "string", "description": "ISO date the referral was received" },
+      "reason": { "type": "string", "description": "Why the referral was made" },
+      "urgency": { "type": "string", "enum": ["routine", "urgent"] },
+      "date_of_birth": { "type": ["string", "null"], "description": "Only if the document states it — null otherwise" }
+    },
+    "additionalProperties": false
+  },
+  "gold": {
+    "referral_date": "2026-03-14",
+    "reason": "persistent damp and mould in the property affecting one bedroom",
+    "urgency": "routine",
+    "date_of_birth": null
+  },
+  "normalize": {
+    "referral_date": "date",
+    "date_of_birth": "date"
+  },
+  "aliases": {
+    "reason": ["damp and mould in the property affecting one bedroom"]
+  }
+}

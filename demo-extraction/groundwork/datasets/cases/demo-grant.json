@@ -1,0 +1,31 @@
+{
+  "id": "demo-grant",
+  "kind": "extraction",
+  "description": "A grant application with a money field — normalisation makes \"£2,400\" and \"2400.00\" the same value — and a deadline the document never states as a date, so gold is null.",
+  "document": "Community grant application, submitted 2 June 2026. The Riverside Growing Group requests £2,400 towards replacement tools and raised beds for the shared garden. The group has 18 active members and has run weekly sessions since 2023. A decision is hoped for before the autumn planting season.",
+  "schema": {
+    "type": "object",
+    "required": ["submission_date", "organisation", "amount_requested", "purpose", "decision_deadline"],
+    "properties": {
+      "submission_date": { "type": "string" },
+      "organisation": { "type": "string" },
+      "amount_requested": { "type": "string" },
+      "purpose": { "type": "string" },
+      "decision_deadline": { "type": ["string", "null"], "description": "A specific date, if the document states one — \"before autumn\" is not a date" }
+    },
+    "additionalProperties": false
+  },
+  "gold": {
+    "submission_date": "2026-06-02",
+    "organisation": "Riverside Growing Group",
+    "amount_requested": "£2,400",
+    "purpose": "replacement tools and raised beds",
+    "decision_deadline": null
+  },
+  "normalize": {
+    "submission_date": "date",
+    "amount_requested": "money",
+    "decision_deadline": "date"
+  },
+  "aliases": {}
+}

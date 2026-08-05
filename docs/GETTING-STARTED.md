@@ -1,6 +1,8 @@
 # Getting started with Groundwork
 
-> Prefer a guided path? [The course](course/) covers this same material as six short lessons with verifiable checkpoints — including the sabotage test that proves your CI gate actually catches regressions.
+> Prefer a guided path? [The course](course/) covers this same material as short lessons with verifiable checkpoints — including the sabotage test that proves your CI gate actually catches regressions.
+
+Groundwork scaffolds a readiness harness per **deployment pattern**: `document-qa` (documents → grounded answers) and `extraction` (documents → structured fields → schema validation). This walkthrough follows the document-QA path end to end; the extraction path has the same rhythm — one adapter file, hand-labelled gold, the same gate — and is covered by [the extraction lesson](course/lesson-6-structured-extraction.md), the `demo:extraction` scripts, and the playbook `groundwork init extraction` scaffolds into your repo.
 
 This walkthrough takes you from a working document-QA prototype to a system with a redaction pre-step, a grounding eval built from your own real failures, and a CI gate that fails any change which makes reliability worse. Plan for about half an hour, most of it spent writing gold cases — which is the half hour that matters.
 
@@ -34,24 +36,26 @@ npm install -D @pharmatools/groundwork
 From your project root:
 
 ```bash
-npx groundwork init
+npx groundwork init            # document QA is the default archetype
 ```
 
-which writes ten files and won't overwrite anything that already exists:
+which writes twelve files and won't overwrite anything that already exists:
 
 ```
-groundwork init — your-project
+groundwork init — your-project (archetype: document-qa)
 
+  + groundwork/DEPLOYMENT-LOG.md
+  + groundwork/redaction.config.json
+  + .github/workflows/groundwork.yml
   + GROUNDWORK.md
   + groundwork/adapter.mjs
   + groundwork/datasets/LABELLING.md
+  + groundwork/datasets/cases/_template-retrieval.json
   + groundwork/datasets/cases/_template.json
   + groundwork/datasets/cases/example-eligibility.json
   + groundwork/datasets/cases/example-numeric.json
   + groundwork/datasets/cases/example-unanswerable.json
   + groundwork/groundwork.config.json
-  + groundwork/redaction.config.json
-  + .github/workflows/groundwork.yml
 ```
 
 `GROUNDWORK.md` is the same playbook as this walkthrough, living in your repo. These scaffolded files are MIT-0 — yours, no attribution needed.

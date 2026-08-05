@@ -4,6 +4,23 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-08-04
+
+The second archetype. Groundwork's units are deployment patterns, not products — `groundwork init <archetype>` scaffolds the whole harness for one. This release adds **structured extraction**: documents → structured fields → schema validation → human review.
+
+### Added
+
+- **`groundwork init extraction`** — scaffolds the extraction archetype: an `extract({ document, schema }) → { record }` adapter boundary (unknown → null, never guessed), an extraction playbook and labelling guide, gold-case templates and examples, plus the shared redaction pre-step, GitHub Action, and deployment log. `groundwork init` (and `init document-qa`) keeps scaffolding document QA — nothing shipped changes behaviour.
+- **The extraction eval** (via [OpenGATE 0.10](https://github.com/nickjlamb/opengate)) — deterministic, per field: schema validity gates, with **nullability as the abstention contract** (a dropped required field fails schema validation, no extra configuration); field accuracy against hand-labelled gold with per-field normalisers (dates → ISO, money → minor units, text folding) and aliases; fabrication named per field — `FABRICATED field "date_of_birth": document does not state it` is the extraction twin of a fabricated dose; missed fields and abstentions reported as precision/recall and gated on regression via the existing baseline machinery. `groundwork check` reads the repo's archetype and judges the right scorer row.
+- **Offline extraction demo** (`npm run demo:extraction` / `demo:extraction:break`) — the full loop with no API key on fictional referral and grant documents; the break mode guesses a date of birth the document never states and drops a required field, and the gate names both. Asserted in CI in both modes, like the document-QA demo.
+- **MCP: `check_extraction`** — check a single extracted record against gold + schema conversationally, sharing OpenGATE's exact gate logic; `scaffold_harness` takes an `archetype`; `check_readiness` reports the archetype's main scorer. The Agent Skill now covers both archetypes.
+- **Course lesson 6** — structured extraction: run the loop, catch the guessed field, write one case from a real document.
+
+### Changed
+
+- Templates reorganised per archetype (`templates/document-qa/`, `templates/extraction/`, shared files in `templates/shared/`) — `initFiles()` output for document QA is unchanged.
+- Roadmap restated around the three-pattern plan (document QA ✅, extraction ✅, research synthesis planned) — and a fourth archetype added to "explicitly not planned".
+
 ## [0.3.0] — 2026-08-03
 
 ### Added
@@ -33,7 +50,8 @@ First public release.
 - Committed regression baselines for the demo and the example, enforced by the test suite.
 - Docs: `docs/GETTING-STARTED.md` walkthrough; website at [pharmatools.ai/groundwork](https://www.pharmatools.ai/groundwork).
 
-[Unreleased]: https://github.com/nickjlamb/groundwork/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/nickjlamb/groundwork/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/nickjlamb/groundwork/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/nickjlamb/groundwork/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/nickjlamb/groundwork/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/nickjlamb/groundwork/releases/tag/v0.1.0

@@ -29,4 +29,4 @@ That last clause is the point of the whole tool: cheaper is only better if the g
 - [ ] `DEPLOYMENT-LOG.md` has its first milestone rows filled in
 - [ ] A weekly transcript-reading slot exists somewhere a calendar will enforce it
 
-**Next:** [Completion checklist →](completion.md)
+**Next:** [Lesson 6 · Structured extraction →](lesson-6-structured-extraction.md) — or straight to the [completion checklist](completion.md) if document QA is your only pattern.

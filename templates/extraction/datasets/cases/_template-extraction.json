@@ -1,0 +1,21 @@
+{
+  "id": "REPLACE-short-slug",
+  "kind": "extraction",
+  "description": "One line: what real failure or critical behaviour this case pins down.",
+  "document": "Paste the real document text — the referral, application, or form as your system receives it.",
+  "schema": {
+    "type": "object",
+    "required": ["a_field_that_must_always_be_found", "a_field_the_document_may_not_state"],
+    "properties": {
+      "a_field_that_must_always_be_found": { "type": "string" },
+      "a_field_the_document_may_not_state": { "type": ["string", "null"] }
+    },
+    "additionalProperties": false
+  },
+  "gold": {
+    "a_field_that_must_always_be_found": "the value, hand-copied from the document",
+    "a_field_the_document_may_not_state": null
+  },
+  "normalize": {},
+  "aliases": {}
+}

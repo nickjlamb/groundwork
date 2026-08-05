@@ -1,6 +1,7 @@
 // `groundwork check` — the local readiness loop:
 //   1. redaction self-test (Redacta): identifiers in, tokens out, no residue;
-//   2. grounding eval (OpenGATE) through the repo's adapter and gold set.
+//   2. the archetype's eval (OpenGATE) through the repo's adapter and gold
+//      set — grounding for document-qa, extraction for extraction.
 //
 // Groundwork doesn't reimplement the eval — it drives OpenGATE's runner with
 // the right flags, so results, baselines, and reports stay fully
@@ -55,7 +56,9 @@ export async function runCheck(opts: CheckOptions): Promise<number> {
     return 1;
   }
 
-  // 2. Grounding eval (OpenGATE) ------------------------------------------
+  // 2. The archetype's eval (OpenGATE) -------------------------------------
+  // The scorer row that decides the verdict depends on the deployment pattern.
+  const scorerId = config.archetype === "extraction" ? "extraction" : "grounding";
   const args = [
     opengateRunnerPath(),
     "--online",
@@ -70,7 +73,7 @@ export async function runCheck(opts: CheckOptions): Promise<number> {
   if (opts.ci) args.push("--ci");
   if (opts.report) args.push("--report");
 
-  out.write(`  → grounding   running OpenGATE…\n\n`);
+  out.write(`  → ${scorerId.padEnd(12)}running OpenGATE…\n\n`);
   // stderr is piped so we can drop the harmless "not a git repository"
   // noise OpenGATE emits (via git, for run provenance) when the partner
   // hasn't run `git init` yet. Everything else passes through.
@@ -89,35 +92,53 @@ export async function runCheck(opts: CheckOptions): Promise<number> {
   const code = res.status ?? 1;
   if (code !== 0) return code;
 
-  // 3. Honest summary — a run where the grounding scorer never executed is
+  // 3. Honest summary — a run where the archetype's scorer never executed is
   // not a pass, whatever the exit code says.
-  const grounding = latestGroundingResult(
-    resolveFromRepo(opts.dir, config.eval.results)
+  const main = latestScorerResult(
+    resolveFromRepo(opts.dir, config.eval.results),
+    scorerId
   );
-  if (grounding?.skipped) {
+  if (main?.skipped) {
     out.write(
-      `\nNot a pass yet: the grounding check itself did not run.\n` +
-        `  reason: ${grounding.reason ?? "unknown"}\n` +
+      `\nNot a pass yet: the ${scorerId} check itself did not run.\n` +
+        `  reason: ${main.reason ?? "unknown"}\n` +
         `Wire your system in groundwork/adapter.mjs (see GROUNDWORK.md, step 1),\n` +
         `then run \`groundwork check\` again.\n\n`
     );
     return 1;
   }
-  if (grounding && grounding.passed === false) {
-    out.write(
-      `\nGrounding check FAILED — the named failures above are the point of\n` +
-        `this harness: each one is an answer that missed a required fact,\n` +
-        `invented a number, or failed to abstain. Fix, or turn any genuine\n` +
-        `surprise into a gold case, and run again.\n\n`
-    );
+  if (main && main.passed === false) {
+    if (scorerId === "extraction") {
+      out.write(
+        `\nExtraction check FAILED — the named failures above are the point of\n` +
+          `this harness: each one is a record that broke your schema, got a\n` +
+          `field wrong, or fabricated a value the document never stated. Fix,\n` +
+          `or turn any genuine surprise into a gold case, and run again.\n\n`
+      );
+    } else {
+      out.write(
+        `\nGrounding check FAILED — the named failures above are the point of\n` +
+          `this harness: each one is an answer that missed a required fact,\n` +
+          `invented a number, or failed to abstain. Fix, or turn any genuine\n` +
+          `surprise into a gold case, and run again.\n\n`
+      );
+    }
     return 1;
   }
 
-  out.write(
-    `\nChecks passed. What that does and doesn't mean: answers are grounded\n` +
-      `against your gold set — a strong floor, not a certification. Keep a\n` +
-      `human in the loop for high-stakes outputs.\n\n`
-  );
+  if (scorerId === "extraction") {
+    out.write(
+      `\nChecks passed. What that does and doesn't mean: extractions are\n` +
+        `faithful to your gold-labelled documents — a strong floor, not a\n` +
+        `certification. Keep a human in the loop for high-stakes outputs.\n\n`
+    );
+  } else {
+    out.write(
+      `\nChecks passed. What that does and doesn't mean: answers are grounded\n` +
+        `against your gold set — a strong floor, not a certification. Keep a\n` +
+        `human in the loop for high-stakes outputs.\n\n`
+    );
+  }
   return 0;
 }
 
@@ -128,8 +149,11 @@ interface ScorerEntry {
   passed?: boolean;
 }
 
-/** Read the grounding scorer's entry from the newest scorecard, if any. */
-function latestGroundingResult(resultsDir: string): ScorerEntry | undefined {
+/** Read one scorer's entry from the newest scorecard, if any. */
+function latestScorerResult(
+  resultsDir: string,
+  scorerId: string
+): ScorerEntry | undefined {
   if (!existsSync(resultsDir)) return undefined;
   const runs = readdirSync(resultsDir)
     .filter((n) => /^\d{4}-.*\.json$/.test(n))
@@ -140,7 +164,7 @@ function latestGroundingResult(resultsDir: string): ScorerEntry | undefined {
     const scorecard = JSON.parse(
       readFileSync(join(resultsDir, newest), "utf8")
     ) as { results?: ScorerEntry[] };
-    return scorecard.results?.find((r) => r.id === "grounding");
+    return scorecard.results?.find((r) => r.id === scorerId);
   } catch {
     return undefined;
   }

@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// Groundwork CLI — deployment-readiness scaffolding for document-QA AI systems.
+// Groundwork CLI — deployment-readiness scaffolding for AI deployment patterns.
 //
 // Commands:
-//   groundwork init    scaffold the readiness harness into the current repo
-//   groundwork check   run the local loop: redaction pre-step + grounding eval
+//   groundwork init [archetype]   scaffold the readiness harness for a pattern
+//                                 (document-qa, extraction) into the current repo
+//   groundwork check              run the local loop: redaction pre-step + eval
 //
 // No CLI framework — argument handling is small enough to keep dependency-free,
 // matching the OpenGATE/Redacta house style.
@@ -21,11 +22,15 @@ function version(): string {
   return pkg.version;
 }
 
-const HELP = `groundwork ${version()} — deployment-readiness for document-QA AI
+const HELP = `groundwork ${version()} — deployment-readiness for AI deployment patterns
 
 Usage:
-  groundwork init [--force] [--dir <path>]   scaffold the readiness harness
-  groundwork check [--dir <path>]            redaction self-test + grounding eval
+  groundwork init [archetype]                scaffold the readiness harness
+        [--force] [--dir <path>]             for a deployment pattern:
+                                               document-qa   documents → grounded answers
+                                               extraction    documents → structured fields
+                                             (default: document-qa)
+  groundwork check [--dir <path>]            redaction self-test + the archetype's eval
         [--baseline]                         save this run as the regression floor
         [--ci]                               fail (exit 1) on regression vs baseline
         [--report]                           write a self-contained HTML report
@@ -58,9 +63,15 @@ async function main(): Promise<void> {
   switch (cmd) {
     case "init": {
       const { runInit } = await import("./commands/init.js");
+      // Positional archetype: `groundwork init extraction`. The bare form
+      // keeps its original meaning (document-qa) so nothing shipped breaks.
+      const positional = args
+        .slice(1)
+        .find((a, i) => !a.startsWith("--") && args[i] !== "--dir");
       await runInit({
         dir: flagValue("--dir") ?? process.cwd(),
         force: flags.has("--force"),
+        archetype: positional,
       });
       return;
     }

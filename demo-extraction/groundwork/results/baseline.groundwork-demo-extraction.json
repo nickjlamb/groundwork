@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-08-04T21:40:22.739Z",
+  "sha": "3df5f8a",
+  "online": true,
+  "adapter": "groundwork-demo-extraction",
+  "results": [
+    {
+      "id": "citation-detection",
+      "meta": {
+        "id": "citation-detection",
+        "mode": "offline"
+      },
+      "metrics": {
+        "perClaim_exactSetRate": 1,
+        "perClaim_jaccardMean": 0,
+        "supportedStyle_accuracy": 1,
+        "knownGap_styles": []
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "claim-extraction",
+      "meta": {
+        "id": "claim-extraction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo-extraction\" has no QA capability"
+    },
+    {
+      "id": "verdict-accuracy",
+      "meta": {
+        "id": "verdict-accuracy",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo-extraction\" has no QA capability"
+    },
+    {
+      "id": "redaction",
+      "meta": {
+        "id": "redaction",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo-extraction\" has no redaction capability"
+    },
+    {
+      "id": "simplification",
+      "meta": {
+        "id": "simplification",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo-extraction\" has no simplify capability"
+    },
+    {
+      "id": "retrieval",
+      "meta": {
+        "id": "retrieval",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo-extraction\" has no retrieval capability"
+    },
+    {
+      "id": "grounding",
+      "meta": {
+        "id": "grounding",
+        "mode": "online"
+      },
+      "skipped": true,
+      "reason": "adapter \"groundwork-demo-extraction\" has no grounding capability"
+    },
+    {
+      "id": "extraction",
+      "meta": {
+        "id": "extraction",
+        "mode": "online"
+      },
+      "metrics": {
+        "n_cases": 2,
+        "n_fields": 9,
+        "field_accuracy": 1,
+        "value_precision": 1,
+        "value_recall": 1,
+        "fabricated_fields": 0,
+        "missed_fields": 0,
+        "schema_failures": 0,
+        "abstention_rate": 1
+      },
+      "failures": [],
+      "passed": true
+    }
+  ]
+}

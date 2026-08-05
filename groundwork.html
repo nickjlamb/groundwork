@@ -142,7 +142,7 @@
 <header class="gw-hero gw-wrap">
   <span class="gw-eyebrow">Groundwork · Open Source</span>
   <h1 class="gw-serif">From AI prototype to production.</h1>
-  <p class="gw-sub">A deployment-readiness harness for document-QA AI — built for the small team with a working prototype, real users waiting, and no ML engineer.</p>
+  <p class="gw-sub">Deployment-readiness harnesses for AI deployment patterns — document QA and structured extraction — built for the small team with a working prototype, real users waiting, and no ML engineer.</p>
   <div class="gw-badges">
     <span class="gw-badge">Deterministic checks</span>
     <span class="gw-badge">No LLM judge</span>
@@ -159,17 +159,18 @@
   <section class="gw-section gw-wrap">
     <div class="gw-kicker">The problem</div>
     <h2 class="gw-serif">The gap between "it works in the demo" and "we can put this in front of people"</h2>
-    <p>Plenty of small teams have built a document-QA assistant that answers well most of the time. What they don't have is the apparatus around it: a privacy pre-step, an evaluation built from their own failures, and a gate that stops a quiet prompt tweak from shipping a system that fabricates. That apparatus usually requires an ML engineer. Groundwork scaffolds it instead.</p>
-    <p>One command writes the harness into your repo. One file connects it to your system. The checks are deterministic — same inputs, same result, every time, free.</p>
+    <p>Plenty of small teams have built an AI assistant that works well most of the time — answering questions from documents, or turning referrals and forms into structured records. What they don't have is the apparatus around it: a privacy pre-step, an evaluation built from their own failures, and a gate that stops a quiet prompt tweak from shipping a system that fabricates. That apparatus usually requires an ML engineer. Groundwork scaffolds it instead.</p>
+    <p>Groundwork's units are <strong>deployment patterns</strong> — think Terraform modules for trustworthy AI. One command writes the whole harness for a pattern into your repo; one file connects it to your system. The checks are deterministic — same inputs, same result, every time, free.</p>
     <div class="gw-code">npm install -D @pharmatools/groundwork
-npx groundwork init</div>
+npx groundwork init               <span class="c"># document QA: documents → grounded answers</span>
+npx groundwork init extraction    <span class="c"># extraction: documents → structured fields</span></div>
   </section>
 
   <section class="gw-section gw-wrap">
     <div class="gw-kicker">Sixty seconds</div>
     <h2 class="gw-serif">See the gate catch fabrication before you wire anything</h2>
-    <p>The repo ships a fully offline demo — a tiny document-QA system wrapped in the exact harness <span class="gw-mono" style="font-family:'SF Mono',ui-monospace,Menlo,monospace;font-size:14px;">init</span> scaffolds. Run it, then flip the system into the failure modes real systems actually have and watch the build turn red:</p>
-    <div class="gw-code"><span class="c"># the whole loop passes, fully offline</span>
+    <p>The repo ships fully offline demos — tiny systems wrapped in the exact harness <span class="gw-mono" style="font-family:'SF Mono',ui-monospace,Menlo,monospace;font-size:14px;">init</span> scaffolds. Run one, then flip the system into the failure modes real systems actually have and watch the build turn red:</p>
+    <div class="gw-code"><span class="c"># document QA: the whole loop passes, fully offline</span>
 npm run demo
 
 <span class="c"># the system starts inventing figures and answering when it should abstain</span>
@@ -177,13 +178,18 @@ npm run demo:break
 
 <span class="r">✗ GROUNDING demo-savings: ungrounded number "14" — not in the provided context</span>
 <span class="r">✗ GROUNDING demo-unanswerable-appeals: unanswerable question — the answer did not abstain</span></div>
-    <p>That red build is the product: a fabricated figure or a failed abstention becomes a CI failure, not a user complaint.</p>
+    <div class="gw-code"><span class="c"># extraction: the same loop — a guessed date of birth, a dropped required field</span>
+npm run demo:extraction:break
+
+<span class="r">✗ EXTRACTION demo-referral: SCHEMA: /referral_date must be string</span>
+<span class="r">✗ EXTRACTION demo-referral: FABRICATED field "date_of_birth": document does not state it</span></div>
+    <p>That red build is the product: a fabricated figure, a guessed field, or a failed abstention becomes a CI failure, not a user complaint. The guessed date of birth is the failure worth staring at — the record looks <em>more</em> complete, and everything downstream trusts it.</p>
   </section>
 
   <section class="gw-section gw-wrap">
     <div class="gw-kicker">The course</div>
-    <h2 class="gw-serif">Six lessons, about two hours</h2>
-    <p>Every lesson ends with a checkpoint you can <em>verify</em> — not "you have read this," but "this specific thing now works on your machine." More than half the time goes to Lesson 3, because writing gold cases is the part that's actually yours. <a href="https://github.com/nickjlamb/groundwork/tree/main/docs/course" style="color:var(--gw-accent);font-weight:600;text-decoration:none;">Take it on GitHub →</a></p>
+    <h2 class="gw-serif">Seven lessons, about two and a half hours</h2>
+    <p>Every lesson ends with a checkpoint you can <em>verify</em> — not "you have read this," but "this specific thing now works on your machine." The biggest block is Lesson 3, because writing gold cases is the part that's actually yours. <a href="https://github.com/nickjlamb/groundwork/tree/main/docs/course" style="color:var(--gw-accent);font-weight:600;text-decoration:none;">Take it on GitHub →</a></p>
     <div class="gw-lessons">
       <div class="gw-lesson">
         <span class="gw-time">10 min</span>
@@ -221,6 +227,12 @@ npm run demo:break
         <p>Measured token usage, savings in leverage order — and the two habits that keep the harness alive: weekly transcripts into gold cases, and a deployment log that is your measurement, because Groundwork sends no telemetry at all.</p>
         <div class="gw-check">✓ cost shows real usage; log's first row filled</div>
       </div>
+      <div class="gw-lesson">
+        <span class="gw-time">20 min</span>
+        <h3 class="gw-serif">Structured extraction — the second archetype</h3>
+        <p>The same loop on the extraction pattern: schemas where <em>nullability is the abstention contract</em>, gold labelled by hand from real documents (null = the document doesn't state it), and the gate naming a guessed field — <span class="gw-mono">FABRICATED field "date_of_birth"</span> — the extraction twin of a fabricated dose.</p>
+        <div class="gw-check">✓ demo:extraction green, demo:extraction:break red; one real case labelled</div>
+      </div>
     </div>
     <div class="gw-sabotage">
       <div class="gw-kicker">The sabotage test</div>
@@ -243,6 +255,18 @@ npm run demo:break
   "answerable": true
 }</div>
     <p>The scorer checks three things, deterministically: the anchored facts appear, every number traces to the context, and unanswerable questions get a refusal instead of an invention.</p>
+    <p style="margin-top:18px;">An extraction case is the same idea for records — the document, your JSON Schema, and gold labelled by hand, where <strong>null means the document does not state it</strong>:</p>
+    <div class="gw-code">{
+  "id": "referral-dob",
+  "kind": "extraction",
+  "document": "…the referral text as your system receives it…",
+  "schema": { "type": "object", "required": ["referral_date", "date_of_birth"],
+    "properties": { "referral_date": { "type": "string" },
+                    "date_of_birth": { "type": ["string", "null"] } } },
+  "gold": { "referral_date": "2026-03-14", "date_of_birth": null },
+  "normalize": { "referral_date": "date" }
+}</div>
+    <p>Values compare exactly after per-field normalisation — dates in ISO, money in minor units — so there is no paraphrase problem and nothing for a judge model to judge. A value extracted into that null field fails, named per field.</p>
   </section>
 
   <section class="gw-section gw-wrap">
@@ -254,7 +278,7 @@ npm run demo:break
   <section class="gw-section gw-wrap">
     <div class="gw-kicker">In Claude</div>
     <h2 class="gw-serif">The same gate, conversationally</h2>
-    <p>Groundwork ships an <strong>MCP server</strong>, so Claude Code, Cowork, and Claude Desktop can run the checks as tools — scaffold a harness, run the full readiness gate on a repo, or paste a single question, context, and answer and get the deterministic verdict with named issues, no repo required. The conversational check imports the exact same gate logic as CI, so the two can never drift apart.</p>
+    <p>Groundwork ships an <strong>MCP server</strong>, so Claude Code, Cowork, and Claude Desktop can run the checks as tools — scaffold a harness for either archetype, run the full readiness gate on a repo, or paste a single answer (or a single extracted record with its schema and gold) and get the deterministic verdict with named issues, no repo required. The conversational checks import the exact same gate logic as CI, so the two can never drift apart.</p>
     <div class="gw-code">{ "mcpServers": { "groundwork": {
     "command": "npx",
     "args": ["-y", "-p", "@pharmatools/groundwork", "groundwork-mcp"]
@@ -266,7 +290,7 @@ npm run demo:break
     <div class="gw-honest">
       <div class="gw-kicker">Honestly</div>
       <h2 class="gw-serif">What Groundwork is not</h2>
-      <p>Groundwork is a strong floor, not a guarantee. It automates the checks that can be automated — redaction, grounding, regression gating, cost hygiene. It cannot certify an AI system safe, and it does not replace human review for answers that affect someone's health, money, legal standing, or safety. Keep a person in that loop. That is not a limitation of this tool so much as the current state of the field, stated plainly.</p>
+      <p>Groundwork is a strong floor, not a guarantee. It automates the checks that can be automated — redaction, grounding, schema validation, field accuracy, regression gating, cost hygiene. It cannot certify an AI system safe, and it does not replace human review for outputs that affect someone's health, money, legal standing, or safety — and extraction raises the stakes quietly, because the record feeds decisions, so a wrong field is a wrong decision. Keep a person in that loop. That is not a limitation of this tool so much as the current state of the field, stated plainly.</p>
       <p style="margin-top:12px;">The course's completion checklist ends the same way: after the machine-checkable part comes the human part — <strong>a named person reviews high-stakes outputs before they reach the person they affect, and everyone on the team can say who.</strong> That item isn't a transitional arrangement to be automated away later; it's part of the design.</p>
     </div>
   </section>

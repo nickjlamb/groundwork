@@ -23,3 +23,11 @@ jobs:
             echo "demo:break exited 0 — the gate failed to catch fabrication" >&2
             exit 1
           fi
+      - name: Offline extraction demo must pass
+        run: npm run demo:extraction
+      - name: Fabricating extraction demo must fail
+        run: |
+          if npm run demo:extraction:break; then
+            echo "demo:extraction:break exited 0 — the gate failed to catch the guessed field" >&2
+            exit 1
+          fi
