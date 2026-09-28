@@ -5,6 +5,10 @@
 //   groundwork init [archetype]   scaffold the readiness harness for a pattern
 //                                 (document-qa, extraction) into the current repo
 //   groundwork check              run the local loop: redaction pre-step + eval
+//   groundwork mcp                start the MCP server over stdio (same as the
+//                                 groundwork-mcp binary; lets `npx -y
+//                                 @pharmatools/groundwork mcp` launch it, which
+//                                 is how MCP Registry clients run the package)
 //
 // No CLI framework — argument handling is small enough to keep dependency-free,
 // matching the OpenGATE/Redacta house style.
@@ -35,6 +39,8 @@ Usage:
         [--ci]                               fail (exit 1) on regression vs baseline
         [--report]                           write a self-contained HTML report
   groundwork cost [--dir <path>]             token usage + savings, leverage order
+  groundwork mcp                             start the MCP server (stdio); same as
+                                             the groundwork-mcp binary
   groundwork --help | --version
 
 groundwork is a strong floor, not a guarantee. It automates the checks that
@@ -91,6 +97,12 @@ async function main(): Promise<void> {
       process.exitCode = await runCost({
         dir: flagValue("--dir") ?? process.cwd(),
       });
+      return;
+    }
+    case "mcp": {
+      // Importing the module starts the server on stdio. Nothing may be
+      // written to stdout before this — it is the JSON-RPC channel.
+      await import("./mcp.js");
       return;
     }
     default:

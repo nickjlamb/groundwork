@@ -106,7 +106,7 @@ Two ways to learn it: [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) is th
 The same checks ship as an **MCP server** (`groundwork-mcp`, stdio) so Claude Code, Cowork, or Claude Desktop can run them conversationally — `check_readiness` on a repo, `check_answer_grounding` on a single answer, `check_extraction` on a single record (no repo needed), `scaffold_harness`, `cost_summary`:
 
 ```json
-{ "mcpServers": { "groundwork": { "command": "npx", "args": ["-y", "-p", "@pharmatools/groundwork", "groundwork-mcp"] } } }
+{ "mcpServers": { "groundwork": { "command": "npx", "args": ["-y", "@pharmatools/groundwork", "mcp"] } } }
 ```
 
 There's also an **Agent Skill** ([`skills/groundwork-readiness/`](skills/groundwork-readiness/)) that teaches an agent to run the gate and report results honestly — including refusing to present a green check as a safety certification.

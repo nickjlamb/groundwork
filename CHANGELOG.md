@@ -4,9 +4,17 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.4.1] — 2026-09-28
+
 ### Added
 
+- **`groundwork mcp`** — starts the MCP server over stdio, same as the `groundwork-mcp` binary. This is the launch path for MCP Registry clients, which run `npx -y @pharmatools/groundwork mcp`.
+- **MCP Registry listing** — `mcpName` (`io.github.nickjlamb/groundwork`) in `package.json` and a `server.json` for publishing to the official registry.
 - **Claude-backed extraction example** (`examples/claude-extraction/`) — the archetype's success test against a real model: Claude fills one schema from three fictional referral letters, with the extraction contract in the prompt (every field present; unknown → null, never guessed), the schema as the cached prefix (the mirror image of document QA's cached document), key-gated evals, usage feeding `groundwork cost`, and a mock Anthropic API so the whole loop runs offline in CI — including a `MOCK_FABRICATE=1` mode proving the gate names a guessed date of birth.
+
+### Fixed
+
+- The MCP server reports its version from `package.json` instead of a hard-coded value.
 
 ## [0.4.0] — 2026-08-04
 

@@ -76,7 +76,11 @@ const text = (value: unknown) => ({
   content: [{ type: "text" as const, text: typeof value === "string" ? value : JSON.stringify(value, null, 2) }],
 });
 
-const server = new McpServer({ name: "groundwork", version: "0.4.0" });
+// Read the version from package.json so it can never drift from the release.
+const PKG_VERSION: string = JSON.parse(
+  readFileSync(join(HERE, "..", "package.json"), "utf8")
+).version;
+const server = new McpServer({ name: "groundwork", version: PKG_VERSION });
 
 server.registerTool(
   "check_answer_grounding",

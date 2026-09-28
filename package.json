@@ -1,8 +1,9 @@
 {
   "name": "@pharmatools/groundwork",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "description": "Groundwork — deployment-readiness harnesses for AI deployment patterns (document QA, structured extraction). Scaffolds redaction, evals from your real failures, a CI regression gate, and a guided playbook into your repo, so a small team can take a prototype to safe production.",
+  "mcpName": "io.github.nickjlamb/groundwork",
   "license": "MIT",
   "author": "Nick Lamb (https://www.pharmatools.ai)",
   "repository": {
@@ -25,7 +26,8 @@
     "dist/",
     "templates/",
     "skills/",
-    "README.md"
+    "README.md",
+    "server.json"
   ],
   "publishConfig": {
     "access": "public"

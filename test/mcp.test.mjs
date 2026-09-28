@@ -11,9 +11,9 @@ import { dirname, join } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
-function mcpSession(requests) {
+function mcpSession(requests, entryArgs = [join(ROOT, "dist", "mcp.js")]) {
   return new Promise((resolvePromise, reject) => {
-    const child = spawn(process.execPath, [join(ROOT, "dist", "mcp.js")], { cwd: ROOT });
+    const child = spawn(process.execPath, entryArgs, { cwd: ROOT });
     const responses = [];
     let buf = "";
     const timer = setTimeout(() => {
@@ -52,6 +52,15 @@ const parseResult = (resp) => JSON.parse(resp.result.content[0].text);
 
 test("MCP server lists the five tools", async () => {
   const responses = await mcpSession([...INIT, { jsonrpc: "2.0", id: 2, method: "tools/list" }]);
+  const tools = responses.find((r) => r.id === 2).result.tools.map((t) => t.name).sort();
+  assert.deepEqual(tools, ["check_answer_grounding", "check_extraction", "check_readiness", "cost_summary", "scaffold_harness"]);
+});
+
+test("`groundwork mcp` starts the same server (the MCP Registry launch path)", async () => {
+  const responses = await mcpSession(
+    [...INIT, { jsonrpc: "2.0", id: 2, method: "tools/list" }],
+    [join(ROOT, "dist", "cli.js"), "mcp"]
+  );
   const tools = responses.find((r) => r.id === 2).result.tools.map((t) => t.name).sort();
   assert.deepEqual(tools, ["check_answer_grounding", "check_extraction", "check_readiness", "cost_summary", "scaffold_harness"]);
 });
