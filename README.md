@@ -11,6 +11,7 @@ Redaction · evals from your real failures · a CI gate that fails fabrication
 [![node](https://img.shields.io/node/v/@pharmatools/groundwork)](package.json)
 [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Glama MCP server](https://glama.ai/mcp/servers/nickjlamb/groundwork/badges/score.svg)](https://glama.ai/mcp/servers/nickjlamb/groundwork)
+[![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/nickjlamb/groundwork)
 
 [Website](https://www.pharmatools.ai/groundwork) · [Getting started](docs/GETTING-STARTED.md) · [Examples](#examples) · [Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
