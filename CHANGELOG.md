@@ -4,6 +4,9 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+- Server icon in `server.json` for the MCP Registry listing. It goes out with the next registry publish.
+
 ## [0.4.1] — 2026-09-28
 
 ### Added

@@ -2,6 +2,15 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.nickjlamb/groundwork",
   "description": "Deployment-readiness checks for document-QA and extraction AI: grounding, extraction, CI gate.",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/nickjlamb/groundwork/main/docs/assets/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/nickjlamb/groundwork",
     "source": "github"
